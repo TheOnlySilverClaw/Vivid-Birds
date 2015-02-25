@@ -1,0 +1,16 @@
+[
+{
+  "modid": "birdmod",
+  "name": "Bird Mod",
+  "description": "A mod which adds a variety of beautiful and useful birds...eventually",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Silverclaw", "DP101"],
+  "credits": "crackedEgg, his reptile code was a great help! AntumDeluge from OpenGameArtfor the vulture sounds.",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

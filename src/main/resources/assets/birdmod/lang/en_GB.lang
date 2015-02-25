@@ -1,0 +1,11 @@
+entity.Lyrebird.name=Lyrebird
+entity.Vulture.name=Vulture
+entity.Ostrich.name=Ostrich
+entity.Kiwi.name=Kiwi
+entity.Penguin.name=Penguin
+entity.Seagull.name=Seagull
+item.ostrich_egg.name=Ostrich Egg
+item.breadcrumbs.name=Breadcrumbs
+item.wildbird_raw.name=Raw Wild Bird
+item.wildbird_cooked.name=Cooked Wild Bird
+itemGroup.Birds=Birds

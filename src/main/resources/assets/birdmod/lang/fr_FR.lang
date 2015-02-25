@@ -1,0 +1,9 @@
+entity.Lyrebird.name=oiseau lyre
+entity.Vulture.name=vautour
+entity.Ostrich.name=autruche
+entity.Kiwi.name=kiwi
+entity.Penguin.name=pingouin
+entity.Seagull.name=mouette
+item.ostrich_egg.name=œuf d'autruche
+item.breadcrumbs.name=miettes
+itemGroup.Birds=oiseaux

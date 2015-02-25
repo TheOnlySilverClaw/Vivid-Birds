@@ -1,0 +1,16 @@
+{
+    "vulture": {
+    "category": "hostile",
+    "sounds": [
+    "croak"
+    ]
+    },
+    
+        "seagull": {
+    "category": "neutral",
+    "sounds": [
+    "seagull1",
+    "seagull2"
+    ]
+    }
+}
