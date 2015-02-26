@@ -7,7 +7,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.monster.EntityMob;
 
-public class EntityAIStartFlying extends EntityAIBase {
+public class EntityAIStartFlying extends EntityAIBase implements TimedAI {
 
 	protected final EntityLiving entity;
 	protected final int flightTimer;
@@ -26,12 +26,13 @@ public class EntityAIStartFlying extends EntityAIBase {
 		this.avoidClass = avoidClass;
 		this.speed = speed;
 		
-		setMutexBits(1);
+		setMutexBits(4);
 		
 		resetCountdown();
 	}
 
-	protected final void resetCountdown() {
+	@Override
+	public void resetCountdown() {
 		
 		flightCountdown = (int) (entity.getRNG().nextGaussian() * flightTimer);
 	}
@@ -39,7 +40,7 @@ public class EntityAIStartFlying extends EntityAIBase {
 	@Override
 	public boolean isInterruptible() {
 
-		return true;
+		return false;
 	}
 
 	protected int flightCountdown;
@@ -47,13 +48,19 @@ public class EntityAIStartFlying extends EntityAIBase {
 	@Override
 	public boolean shouldExecute() {
 
-		return HeightChecker.isNearGround(entity, 5) && shouldFly();
+		return HeightChecker.isNearGround(entity, 3) && shouldFly();
+	}
+
+	
+	@Override
+	public boolean continueExecuting() {
+
+		return HeightChecker.isNearGround(entity, 8);
 	}
 
 	protected boolean shouldFly() {
 		
-		System.out.println(flightCountdown);
-		boolean fly =  isEnemyNear() || flightCountdown-- < 0;
+		boolean fly =  isEnemyNear() || isReady();
 		return fly;
 	}
 	
@@ -68,7 +75,6 @@ public class EntityAIStartFlying extends EntityAIBase {
 	@Override
 	public void startExecuting() {
 		
-		System.out.println("Starting to fly");
 		resetCountdown();
 	}
 
@@ -81,6 +87,12 @@ public class EntityAIStartFlying extends EntityAIBase {
 	@Override
 	public void updateTask() {
 		
-		entity.motionY = speed;
+		entity.motionY = speed * 2 * entity.getRNG().nextGaussian();
+	}
+
+	@Override
+	public boolean isReady() {
+
+		return flightCountdown-- < 0;
 	}
 }

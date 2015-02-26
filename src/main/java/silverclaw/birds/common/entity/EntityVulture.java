@@ -2,6 +2,7 @@ package silverclaw.birds.common.entity;
 
 import silverclaw.birds.common.Birds;
 import silverclaw.birds.common.FeatherVariant;
+import silverclaw.birds.common.entity.ai.EntityAILandSomewhere;
 import silverclaw.birds.common.entity.ai.EntityAIPickupItem;
 import silverclaw.birds.common.entity.ai.EntityAISmoothFlying;
 import silverclaw.birds.common.entity.ai.EntityAIStartFlying;
@@ -46,19 +47,14 @@ public class EntityVulture extends EntityMob {
 		Potion.wither
 	};
 
-	private final static int MAX_FLIGHT_DURATION = 1000;
-	private final static int MAX_PAUSE_DURATION = 500;
-	
-	private int flightDuration;
-	
+		
 	public EntityVulture(World worldObj) {
 		
 		super(worldObj);
 		
 		setSize(1f, 1.6f);
 		stepHeight = 1.2f;
-		limbSwingAmount = 0.6f;
-		flightDuration = rand.nextInt(MAX_FLIGHT_DURATION) - MAX_PAUSE_DURATION;
+		limbSwingAmount = 0.8f;
 				
 		tasks.addTask(2, new EntityAITempt(this, 1.3, Items.rotten_flesh, false));
 		tasks.addTask(1, new EntityAIPanic(this, 1.4f));
@@ -83,8 +79,9 @@ public class EntityVulture extends EntityMob {
 			}
 		}, 3, 1.1, 1.4));
 		
-		tasks.addTask(4, new EntityAIStartFlying(this, 100, 15, EntityPlayer.class, 0.2f));
+		tasks.addTask(3, new EntityAIStartFlying(this, 100, 5, EntityPlayer.class, 0.2f));
 		tasks.addTask(4, new EntityAISmoothFlying(this, 90, 4, 0.33f, 600));
+		tasks.addTask(3, new EntityAILandSomewhere(this, 300, 0.2f));
 		
 		tasks.addTask(1, new EntityAISwimming(this));
 		

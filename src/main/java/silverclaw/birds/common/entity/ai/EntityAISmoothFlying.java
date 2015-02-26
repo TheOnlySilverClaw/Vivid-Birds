@@ -4,7 +4,7 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.util.MathHelper;
 
-public class EntityAISmoothFlying extends EntityAIBase {
+public class EntityAISmoothFlying extends EntityAIBase implements TimedAI {
 	
 	private final EntityLiving entity;
 	private final int variance;
@@ -20,6 +20,9 @@ public class EntityAISmoothFlying extends EntityAIBase {
 	public EntityAISmoothFlying(EntityLiving entity, int targetHeight, int variance,
 			float speed, int directionTimer) {
 		
+		
+		setMutexBits(4);
+		
 		this.entity = entity;
 		this.targetHeight = targetHeight;
 		this.variance = variance;
@@ -27,9 +30,12 @@ public class EntityAISmoothFlying extends EntityAIBase {
 		this.directionTimer = directionTimer;
 		
 		vary = speed;
+		
+		resetCountdown();
 	}
 
-	private void resetCountdown() {
+	@Override
+	public void resetCountdown() {
 	
 		directionCountdown = entity.getRNG().nextInt(directionTimer);
 	}
@@ -37,7 +43,7 @@ public class EntityAISmoothFlying extends EntityAIBase {
 	@Override
 	public boolean shouldExecute() {
 
-		return !HeightChecker.isNearGround(entity, 4);
+		return !HeightChecker.isNearGround(entity, 10);
 	}
 
 	@Override
@@ -54,13 +60,16 @@ public class EntityAISmoothFlying extends EntityAIBase {
 
 	@Override
 	public void updateTask() {
-		
+				
 		int height = entity.getPosition().getY();
 
 		if(height + variance < targetHeight) {
 			
 			entity.limbSwing = 4;
 			entity.motionY = speed;
+			
+			System.out.println("Flying up!");
+
 			
 		} else if(height - variance > targetHeight) {
 			
@@ -74,7 +83,7 @@ public class EntityAISmoothFlying extends EntityAIBase {
 			vary += (entity.getRNG().nextFloat() - 0.5f);
 		}
 		
-		if(directionCountdown-- == 0) {
+		if(isReady()) {
 			resetCountdown();
 			entity.rotationYaw += (entity.getRNG().nextFloat() - 0.5f) * 180f;
 		}
@@ -85,6 +94,12 @@ public class EntityAISmoothFlying extends EntityAIBase {
 		entity.rotationYawHead = entity.rotationYaw 
 				+ ((float) entity.getRNG().nextGaussian() - 0.5f);
 
+	}
+
+	@Override
+	public boolean isReady() {
+
+		return directionCountdown-- == 0;
 	}
 	
 }

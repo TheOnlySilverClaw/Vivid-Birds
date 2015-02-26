@@ -27,7 +27,7 @@ public class HeightChecker {
 	
 	public static boolean isOnGround(Entity entity) {
 		
-		return getHeightAboveGround(entity, 2) < 2;
+		return getHeightAboveGround(entity, 1) < 1;
 	}
 	
 	public static boolean isNearGround(Entity entity, int limit) {

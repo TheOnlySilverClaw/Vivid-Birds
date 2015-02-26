@@ -120,10 +120,7 @@ public class ModelVulture extends ModelBase {
 	   
 	   float limbSwing = ((EntityLiving) entity).limbSwingAmount;
 	   
-	   BlockPos under_1 = entity.getPosition().down();
-	   BlockPos under_2 = under_1.down();
-	   
-	   if(!HeightChecker.isNearGround(entity, 2)) {
+	   if(!HeightChecker.isNearGround(entity, 1)) {
 		   
 		   leg_1.rotateAngleX = 0.2f;
 		   leg_2.rotateAngleX = -leg_1.rotateAngleX;
