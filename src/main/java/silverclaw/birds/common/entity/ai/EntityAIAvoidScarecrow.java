@@ -44,7 +44,6 @@ public class EntityAIAvoidScarecrow extends EntityAIBase {
 		this.searchRadius = searchRadius;
 		this.farSpeed = farSpeed;
 		this.nearSpeed = nearSpeed;
-
 	}
 
 	@Override
@@ -61,8 +60,7 @@ public class EntityAIAvoidScarecrow extends EntityAIBase {
 		
 		if(target == null) return false;
 		
-		entity
-		.getNavigator()
+		entity.getNavigator()
 		.tryMoveToXYZ(target.xCoord + gauss, 
 				target.yCoord + gauss, target.zCoord - gauss, farSpeed);
 		
@@ -93,8 +91,8 @@ public class EntityAIAvoidScarecrow extends EntityAIBase {
 								
 								ItemArmor armorPiece = (ItemArmor) stack.getItem();
 								
-								scareValue += armorPiece.damageReduceAmount * 0.6;
-								scareValue += armorPiece.getItemEnchantability() * 0.3;
+								scareValue += armorPiece.damageReduceAmount * 0.7;
+								scareValue += armorPiece.getItemEnchantability() * 0.4;
 								}
 						}
 					}
@@ -103,7 +101,6 @@ public class EntityAIAvoidScarecrow extends EntityAIBase {
 							&& armorStand.getCurrentArmor(3).getItem() == Item.getItemFromBlock(Blocks.pumpkin)) {
 						scareValue *= 1.5;
 					}
-					System.out.println("Scarevalue: " + scareValue);
 					return scareValue > entity.getDistanceSqToEntity(armorStand);
 				}	
 			});

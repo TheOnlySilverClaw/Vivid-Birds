@@ -1,5 +1,6 @@
 package silverclaw.birds.common.entity.ai;
 
+import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.init.Blocks;
@@ -27,7 +28,8 @@ public class HeightChecker {
 	
 	public static boolean isOnGround(Entity entity) {
 		
-		return getHeightAboveGround(entity, 1) < 1;
+		return entity.getEntityWorld().getBlockState(
+				entity.getPosition().down()).getBlock() != Blocks.air;
 	}
 	
 	public static boolean isNearGround(Entity entity, int limit) {

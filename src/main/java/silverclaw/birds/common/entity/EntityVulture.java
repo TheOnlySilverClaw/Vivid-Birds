@@ -1,11 +1,5 @@
 package silverclaw.birds.common.entity;
 
-import silverclaw.birds.common.Birds;
-import silverclaw.birds.common.FeatherVariant;
-import silverclaw.birds.common.entity.ai.EntityAILandSomewhere;
-import silverclaw.birds.common.entity.ai.EntityAIPickupItem;
-import silverclaw.birds.common.entity.ai.EntityAISmoothFlying;
-import silverclaw.birds.common.entity.ai.EntityAIStartFlying;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -21,8 +15,6 @@ import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityMob;
-import net.minecraft.entity.passive.EntityChicken;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -31,6 +23,9 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase.TempCategory;
+import silverclaw.birds.common.FeatherVariant;
+import silverclaw.birds.common.entity.ai.EntityAIFlyingBase;
+import silverclaw.birds.common.entity.ai.EntityAIPickupItem;
 
 import com.google.common.base.Predicate;
 
@@ -51,7 +46,7 @@ public class EntityVulture extends EntityMob {
 	public EntityVulture(World worldObj) {
 		
 		super(worldObj);
-		
+
 		setSize(1f, 1.6f);
 		stepHeight = 1.2f;
 		limbSwingAmount = 0.8f;
@@ -79,9 +74,7 @@ public class EntityVulture extends EntityMob {
 			}
 		}, 3, 1.1, 1.4));
 		
-		tasks.addTask(3, new EntityAIStartFlying(this, 100, 5, EntityPlayer.class, 0.2f));
-		tasks.addTask(4, new EntityAISmoothFlying(this, 90, 4, 0.33f, 600));
-		tasks.addTask(3, new EntityAILandSomewhere(this, 300, 0.2f));
+		tasks.addTask(2, new EntityAIFlyingBase(this, 1.3f, 500, 400, 80));
 		
 		tasks.addTask(1, new EntityAISwimming(this));
 		
@@ -124,8 +117,8 @@ public class EntityVulture extends EntityMob {
 		boolean success = super.attackEntityFrom(damageSource, amount);
 		Entity attacker = damageSource.getEntity();		
 		if(attacker != null) {
-			float punch = isInWater() ? 0.05f : 0.15f;
-			motionY += 0.2f + punch;
+			float punch = isInWater() ? 0.05f : 0.12f;
+			motionY += 0.25f + punch;
 			motionX += (this.posX - attacker.posX) * punch;
 			motionZ += (this.posZ - attacker.posZ) * punch;
 			limbSwingAmount *= 6;

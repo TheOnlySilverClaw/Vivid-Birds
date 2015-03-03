@@ -79,12 +79,12 @@ public class ModelVulture extends ModelBase {
 		leg_2 = new ModelRenderer(this, 16, 24);
 		leg_2.setTextureSize(32, 32 );
 		leg_2.addBox(-0.5F, 0F, -0.5F, 1, 6, 1);
-		leg_2.setRotationPoint(-2F, 6f, 0f);
+		leg_2.setRotationPoint(-2F, 5f, 0f);
 		
 		leg_1 = new ModelRenderer(this, 16, 24);
 		leg_1.setTextureSize(32, 32 );
 		leg_1.addBox(-0.5F, 1F, -0.5F, 1, 6, 1);
-		leg_1.setRotationPoint(2F, 6f, 0f);
+		leg_1.setRotationPoint(2F, 5f, 0f);
 		
 		tail = new ModelRenderer(this, 0, 24);
 		tail.setTextureSize(32, 32 );
