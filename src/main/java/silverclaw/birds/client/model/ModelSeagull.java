@@ -1,9 +1,11 @@
 package silverclaw.birds.client.model;
 
+import silverclaw.birds.common.entity.ai.HeightChecker;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.MathHelper;
 
 public class ModelSeagull extends ModelBase {
@@ -63,17 +65,17 @@ public class ModelSeagull extends ModelBase {
         foot_2.setTextureSize( 64, 32 );
         foot_2.addBox( -0.5F, -0.5F, -1F, 1, 1, 2);
         foot_2.setRotationPoint( 0F, 5F, -1F );
-        
+       
         wing_1 = new ModelRenderer( this, 32, 21 );
         wing_1.setTextureSize( 64, 32 );
         wing_1.addBox( 0F, 0F, 0F, 1, 3, 6);
-        wing_1.setRotationPoint( 2F, -0.5F, -3F );
+        wing_1.setRotationPoint( -2F, -0.5F, -3F );
         
         wing_2 = new ModelRenderer( this, 32, 21 );
         wing_2.setTextureSize( 64, 32 );
         wing_2.addBox( 0F, 0F, 0F, 1, 3, 6);
-        wing_2.setRotationPoint( -2F, -0.5F, -3F );
-        
+        wing_2.setRotationPoint( 2F, -0.5F, -3F );
+       
         tail_1 = new ModelRenderer( this, 20, 17 );
         tail_1.setTextureSize( 64, 32 );
         tail_1.addBox( -1F, 0F, -3F, 2, 0, 6);
@@ -145,18 +147,47 @@ public class ModelSeagull extends ModelBase {
         tail_3.rotateAngleY = 0.4f;
         tail_3.rotateAngleZ = 1.06f;
         
-        wing_1.rotateAngleX = MathHelper.cos(time * 0.662f) * 0.5f * speed + 0.3f;
-        wing_2.rotateAngleX = wing_1.rotateAngleX;
-        
-        wing_1.rotateAngleY = Math.max(MathHelper.cos(time * 0.662f) * 1.5f * speed, 0.2f);
-        wing_2.rotateAngleY = -wing_1.rotateAngleY;
-        
-        wing_1.rotateAngleZ = Math.max(MathHelper.cos(time * 0.662f) * 1.5f * speed, 0.2f) - 0.5f;
-        wing_2.rotateAngleZ = -wing_1.rotateAngleZ;
-        
-		leg_1.rotateAngleX = MathHelper.cos(time * 0.66f) * 1.4f * speed;
-		leg_2.rotateAngleX = MathHelper.cos(time * 0.66f + (float) Math.PI) * 1.4f * speed;
-		
+ 	   float limbSwing = ((EntityLiving) entity).limbSwingAmount;
+	   
+ 	   if(!HeightChecker.isNearGround(entity, 2)) {
+ 		   
+ 		   leg_1.rotateAngleX = 0.2f;
+ 		   leg_2.rotateAngleX = -leg_1.rotateAngleX;
+ 		   
+ 		   wing_1.rotateAngleX = MathHelper.cos(time * 0.662f) * limbSwing * speed - 0.4f;
+ 		   wing_2.rotateAngleX = wing_1.rotateAngleX;
+ 		   
+ 		   wing_1.rotateAngleY = -0.8f;
+ 		   wing_2.rotateAngleY = -wing_1.rotateAngleY;
+ 		   
+ 		   wing_1.rotateAngleZ = MathHelper.cos(time * 0.662f) * limbSwing * speed - 0.6f;
+ 		   wing_2.rotateAngleZ = -wing_1.rotateAngleZ;
+ 		   
+ 		   head.rotateAngleX = 0.1f;
+ 		   
+ 		   head.rotateAngleY = yaw / 57.3f;
+ 		   
+ 	   } else {
+ 		    		   
+ 		   leg_1.rotateAngleX = MathHelper.cos(time * 0.762f) * 1.4f * speed;
+ 		   leg_2.rotateAngleX = MathHelper.cos(time * 0.762f + (float) Math.PI) * 1.4f * speed;
+ 		   
+ 		   wing_1.rotateAngleX = MathHelper.cos(time * 0.662f) * limbSwing * speed + 0.25f;
+ 		   wing_2.rotateAngleX = wing_1.rotateAngleX;
+ 		   
+ 		   wing_2.rotateAngleZ = Math.max(MathHelper.cos(time * 0.662f) * 1.5f * speed, 0.1f);
+ 		   wing_1.rotateAngleZ = -wing_2.rotateAngleZ;
+ 		   
+ 		   wing_1.rotateAngleY = -0.3f;
+ 		   wing_2.rotateAngleY = -wing_1.rotateAngleY;
+ 		   
+ 		   foot_1.rotateAngleX = 0.002f;
+ 		   foot_2.rotateAngleX = foot_1.rotateAngleX;
+ 		    		   
+ 		   head.rotateAngleX = pitch / 57.3f + 0.2f;
+ 		   head.rotateAngleY = yaw / (57.3f * 2);
+ 		   
+ 	   }
 		beak.rotateAngleX = 0.115f;
 	
 	}

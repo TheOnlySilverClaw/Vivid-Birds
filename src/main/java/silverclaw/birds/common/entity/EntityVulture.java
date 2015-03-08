@@ -15,7 +15,9 @@ import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.passive.EntityWaterMob;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
@@ -32,6 +34,7 @@ import com.google.common.base.Predicate;
 public class EntityVulture extends EntityMob {
 	
 	private final static Potion[] PREY_EFFECTS = new Potion [] {
+		
 		Potion.blindness,
 		Potion.confusion,
 		Potion.harm,
@@ -42,6 +45,23 @@ public class EntityVulture extends EntityMob {
 		Potion.wither
 	};
 
+	private final static Item [] FOOD_ITEMS = new Item [] {
+		
+		Items.beef,
+		Items.chicken,
+		Items.cooked_beef,
+		Items.cooked_chicken,
+		Items.cooked_fish,
+		Items.cooked_mutton,
+		Items.cooked_porkchop,
+		Items.cooked_rabbit,
+		Items.egg,
+		Items.fish,
+		Items.mutton,
+		Items.porkchop,
+		Items.rabbit,
+		Items.rabbit_stew
+	};
 		
 	public EntityVulture(World worldObj) {
 		
@@ -55,12 +75,13 @@ public class EntityVulture extends EntityMob {
 		tasks.addTask(1, new EntityAIPanic(this, 1.4f));
 		
 		tasks.addTask(0, new EntityAILeapAtTarget(this, 0.5F));
-		tasks.addTask(2, new EntityAIAvoidEntity(this, new Predicate<Entity>() {
+		tasks.addTask(4, new EntityAIAvoidEntity(this, new Predicate<Entity>() {
 
 			@Override
 			public boolean apply(Entity entity) {
 				
 				if(entity instanceof EntityVulture) return false;
+				if(entity instanceof EntityWaterMob) return false;
 				if(entity instanceof EntityLivingBase) {
 					EntityLivingBase living = (EntityLivingBase) entity;
 					if (living.isBurning()) return living.getHealth() > living.getMaxHealth()/3;
@@ -74,7 +95,7 @@ public class EntityVulture extends EntityMob {
 			}
 		}, 3, 1.1, 1.4));
 		
-		tasks.addTask(2, new EntityAIFlyingBase(this, 1.3f, 500, 400, 80));
+		tasks.addTask(4, new EntityAIFlyingBase(this, 1.3f, 500, 700, 80));
 		
 		tasks.addTask(1, new EntityAISwimming(this));
 		
@@ -86,7 +107,11 @@ public class EntityVulture extends EntityMob {
 		targetTasks.addTask(0, new EntityAINearestAttackableTarget(this, EntityLivingBase.class, false));
 		targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
 		targetTasks.addTask(1, new EntityAIPickupItem(this, Items.rotten_flesh, 8, 1.1f, 0.3f));
-		targetTasks.addTask(2, new EntityAIPickupItem(this, Items.chicken, 6, 1.5f, 0.3f));
+		
+		for(Item item : FOOD_ITEMS) {
+			
+			targetTasks.addTask(3, new EntityAIPickupItem(this, item, 6, 1.0f, 0.3f));
+		}
 
 	}
 
