@@ -17,6 +17,7 @@ import silverclaw.birds.client.model.ModelLyrebird;
 import silverclaw.birds.client.model.ModelOstrich;
 import silverclaw.birds.client.model.ModelPenguin;
 import silverclaw.birds.client.model.ModelSeagull;
+import silverclaw.birds.client.model.ModelSongbird;
 import silverclaw.birds.client.model.ModelVulture;
 import silverclaw.birds.client.render.RenderCrow;
 import silverclaw.birds.client.render.RenderKiwi;
@@ -24,6 +25,8 @@ import silverclaw.birds.client.render.RenderLyrebird;
 import silverclaw.birds.client.render.RenderOstrich;
 import silverclaw.birds.client.render.RenderPenguin;
 import silverclaw.birds.client.render.RenderSeagull;
+import silverclaw.birds.client.render.RenderSongbird;
+import silverclaw.birds.client.render.RenderSparrow;
 import silverclaw.birds.client.render.RenderVulture;
 import silverclaw.birds.common.BirdItem;
 import silverclaw.birds.common.Birds;
@@ -36,6 +39,8 @@ import silverclaw.birds.common.entity.EntityOstrich;
 import silverclaw.birds.common.entity.EntityPenguin;
 import silverclaw.birds.common.entity.EntitySeagull;
 import silverclaw.birds.common.entity.EntityVulture;
+import silverclaw.birds.common.entity.songbirds.EntitySongBird;
+import silverclaw.birds.common.entity.songbirds.EntitySparrow;
 
 public class ClientProxyBirds extends CommonProxyBirds {
 	
@@ -61,6 +66,12 @@ public class ClientProxyBirds extends CommonProxyBirds {
 		
 		RenderingRegistry.registerEntityRenderingHandler(EntityPenguin.class,
 				new RenderPenguin(manager, new ModelPenguin(), 0.5f));
+		
+		RenderingRegistry.registerEntityRenderingHandler(EntitySongBird.class, 
+				new RenderSongbird(manager, new ModelSongbird(), 0.2f));
+		
+		RenderingRegistry.registerEntityRenderingHandler(EntitySparrow.class, 
+				new RenderSparrow(manager, new ModelSongbird(), 0.2f));
 	}
 
 	@Override

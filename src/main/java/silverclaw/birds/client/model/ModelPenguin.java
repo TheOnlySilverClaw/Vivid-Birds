@@ -83,7 +83,6 @@ public class ModelPenguin extends ModelBase {
 			foot_1.render(par7);
 			foot_2.render(par7);
 		}			
-
 	}
 		
 	@Override

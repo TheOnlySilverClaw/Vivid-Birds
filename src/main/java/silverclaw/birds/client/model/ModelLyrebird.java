@@ -34,27 +34,27 @@ public class ModelLyrebird extends ModelBase {
 		tail = new ModelRenderer(this, 14, 7);
 		tail.setTextureSize(32, 32 );
 		tail.addBox(-0.5f, -7f, -1.5f, 1, 8, 3);
-		tail.setRotationPoint(0f, 16f, 2.5f);
+		tail.setRotationPoint(0f, 0f, 2.5f);
 
 		head = new ModelRenderer(this, 0, 0);
 		head.setTextureSize(32, 32 );
 		head.addBox(-1f, -2.5f, -2f, 2, 3, 2);
-		head.setRotationPoint(0f, 17f, -3f);
+		head.setRotationPoint(0f, -1f, -3f);
 
 		beak = new ModelRenderer(this, 14, 0);
 		beak.setTextureSize(32, 32 );
 		beak.addBox(-0.5f, -0.5f, -1f, 1, 1, 2);
-		beak.setRotationPoint(0f, 16f, -5.5f);
+		beak.setRotationPoint(0f, -1f, -2.5f);
 
 		leg_1 = new ModelRenderer(this, 0, 12);
 		leg_1.setTextureSize(32, 32 );
 		leg_1.addBox(-0.5f, 0f, 0f, 1, 4, 0);
-		leg_1.setRotationPoint(-1f, 20f, 0f);
+		leg_1.setRotationPoint(-1f, 0f, 0f);
 
 		leg_2 = new ModelRenderer(this, 0, 12);
 		leg_2.setTextureSize(32, 32 );
 		leg_2.addBox(-0.5f, 0f, 0f, 1, 4, 0);
-		leg_2.setRotationPoint(1f, 20f, 0f);
+		leg_2.setRotationPoint(1f, 0f, 0f);
 
 		foot_1 = new ModelRenderer(this, 0, 14 );
 		foot_1.setTextureSize(32, 32 );
@@ -69,15 +69,25 @@ public class ModelLyrebird extends ModelBase {
 		wing_1 = new ModelRenderer(this, 0, 10);
 		wing_1.setTextureSize(32, 32 );
 		wing_1.addBox(-0.5f, 0f, 0f, 1, 4, 6);
-		wing_1.setRotationPoint(-2f, 16f, -3f);
+		wing_1.setRotationPoint(-1.5f, -1f, -3.5f);
 
 		wing_2 = new ModelRenderer(this, 0, 10);
 		wing_2.setTextureSize(32, 32 );
 		wing_2.addBox(-0.5f, 0f, 0f, 1, 4, 6);
-		wing_2.setRotationPoint(2f, 16f, -3f);
+		wing_2.setRotationPoint(1.5f, -1f, -3.5f);
 		
+		body.addChild(head);
+		head.addChild(beak);
+		
+		body.addChild(leg_1);
+		body.addChild(leg_2);
 		leg_1.addChild(foot_1);
 		leg_2.addChild(foot_2);
+		
+		body.addChild(wing_1);
+		body.addChild(wing_2);
+		
+		body.addChild(tail);
 	}
 
 	@Override
@@ -92,26 +102,12 @@ public class ModelLyrebird extends ModelBase {
 			GlStateManager.scale(0.5f, 0.5f, 0.7f);
 			GlStateManager.translate(0, 22f * par7, 0);
 			body.render(par7);
-			head.render(par7);
-			tail.render(par7);
-			beak.render(par7);
-			leg_1.render(par7);
-			leg_2.render(par7);
-			wing_1.render(par7);
-			wing_2.render(par7);
 			GlStateManager.popMatrix();
 		} else {
 			GlStateManager.pushMatrix();
-			GlStateManager.scale(1.1f, 1.1f, 1.6f);
+			GlStateManager.scale(1.1f, 1.1f, 1.4f);
 			GlStateManager.translate(0, -2.5f*par7, 0);
 			body.render(par7);
-			head.render(par7);
-			tail.render(par7);
-			beak.render(par7);
-			leg_1.render(par7);
-			leg_2.render(par7);
-			wing_1.render(par7);
-			wing_2.render(par7);
 			GlStateManager.popMatrix();
 		}
 	}

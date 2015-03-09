@@ -59,12 +59,12 @@ public class ModelVulture extends ModelBase {
 		wing_1 = new ModelRenderer(this, 20, 14);
 		wing_1.setTextureSize(32, 32 );
 		wing_1.addBox(-0.5F, 0F, -2F, 1, 12, 4);
-		wing_1.setRotationPoint(3.5F, -4F, -1f);
+		wing_1.setRotationPoint(3.3F, -4F, -1f);
 		
 		wing_2 = new ModelRenderer(this, 20, 14);
 		wing_2.setTextureSize(32, 32 );
 		wing_2.addBox(-0.5F, 0F, -2F, 1, 12, 4);
-		wing_2.setRotationPoint(-3.5F, -4F, -1f);
+		wing_2.setRotationPoint(-3.3F, -4F, -1f);
 		
 		foot_1 = new ModelRenderer(this, 7, 28);
 		foot_1.setTextureSize(32, 32 );
@@ -123,15 +123,15 @@ public class ModelVulture extends ModelBase {
 	   if(!HeightChecker.isNearGround(entity, 2)) {
 		   
 		   leg_1.rotateAngleX = 0.2f;
-		   leg_2.rotateAngleX = -leg_1.rotateAngleX;
+		   leg_2.rotateAngleX = leg_1.rotateAngleX;
 		   
-		   wing_1.rotateAngleX = MathHelper.cos(time * 0.662f) * limbSwing * speed - 0.4f;
+		   wing_1.rotateAngleX = MathHelper.cos(time * 0.8f) * limbSwing * speed - 0.4f;
 		   wing_2.rotateAngleX = wing_1.rotateAngleX;
 		   
 		   wing_1.rotateAngleY = -0.8f;
 		   wing_2.rotateAngleY = -wing_1.rotateAngleY;
 		   
-		   wing_1.rotateAngleZ = MathHelper.cos(time * 0.662f) * limbSwing * speed - 0.6f;
+		   wing_1.rotateAngleZ = MathHelper.cos(time * 0.8f) * limbSwing * speed - 0.6f;
 		   wing_2.rotateAngleZ = -wing_1.rotateAngleZ;
 		   
 		   body.rotateAngleX = 1.2f;

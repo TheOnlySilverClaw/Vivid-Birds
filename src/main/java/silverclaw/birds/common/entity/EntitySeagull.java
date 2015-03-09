@@ -23,7 +23,7 @@ public class EntitySeagull extends EntityPeacefulBird {
 		tasks.addTask(2, new EntityAIFlyingBase(this, 1.3f, 800, 400, 80));
 
 		targetTasks.addTask(1, new EntityAIPickupItem(this, Items.fish, 8, 1.1f, 0.3f));
-	
+		targetTasks.addTask(2, new EntityAIPickupItem(this, Items.cooked_fish, 6, 1.0f, 0.3f));
 
 }
 
@@ -40,7 +40,7 @@ public class EntitySeagull extends EntityPeacefulBird {
 		
 		super.applyEntityAttributes();
 		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.25);
-		getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(5.0);
+		getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(4.0);
 	}
 	
 	@Override
@@ -55,7 +55,7 @@ public class EntitySeagull extends EntityPeacefulBird {
 		entityDropItem(new ItemStack(Items.feather, rand.nextInt(2), 
 				FeatherVariant.SEAGULL.getMetaData()), 0.4f);
 		
-		if(rand.nextFloat() < 0.4f) {
+		if(rand.nextFloat() < 0.1f) {
 			dropItem(Items.fish, 1);
 		}
 	}

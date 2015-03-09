@@ -20,6 +20,7 @@ import net.minecraft.world.biome.BiomeGenBase;
 public class EntityLyrebird extends EntityPeacefulBird {
 	
 	private final static String [] LIVING_SOUNDS = {
+		
 		"minecraft:mob.cat.meow",
 		"minecraft:mob.cat.purr",
 		"minecraft:mob.cat.purreow",
@@ -48,6 +49,7 @@ public class EntityLyrebird extends EntityPeacefulBird {
 	};
 	
 	private final static String [] HURT_SOUNDS = {
+		
 		"minecraft:mob.cat.hiss",
 		"minecraft:mob.horse.angry",
 		"minecraft:mob.endermen.scream",
@@ -74,6 +76,7 @@ public class EntityLyrebird extends EntityPeacefulBird {
 	
 
 	private final static String [] DEATH_SOUNDS = {
+		
 		"minecraft:game.player.die",
 		"minecraft:game.neutral.die",
 		"minecraft:game.hostile.die",
@@ -155,7 +158,7 @@ public class EntityLyrebird extends EntityPeacefulBird {
 	@Override
 	protected float getSoundVolume() {
 		
-		return (float) (rand.nextGaussian() + 0.6f);
+		return (float) (rand.nextGaussian() + 0.8f);
 	}
 
 	@Override

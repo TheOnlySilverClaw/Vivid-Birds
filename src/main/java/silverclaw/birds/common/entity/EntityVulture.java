@@ -14,6 +14,7 @@ import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
+import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityWaterMob;
 import net.minecraft.init.Items;
@@ -74,16 +75,21 @@ public class EntityVulture extends EntityMob {
 		tasks.addTask(2, new EntityAITempt(this, 1.3, Items.rotten_flesh, false));
 		tasks.addTask(1, new EntityAIPanic(this, 1.4f));
 		
-		tasks.addTask(0, new EntityAILeapAtTarget(this, 0.5F));
-		tasks.addTask(4, new EntityAIAvoidEntity(this, new Predicate<Entity>() {
+		tasks.addTask(2, new EntityAILeapAtTarget(this, 0.5F));
+		tasks.addTask(3, new EntityAIAvoidEntity(this, new Predicate<Entity>() {
 
 			@Override
 			public boolean apply(Entity entity) {
 				
-				if(entity instanceof EntityVulture) return false;
-				if(entity instanceof EntityWaterMob) return false;
 				if(entity instanceof EntityLivingBase) {
+					
 					EntityLivingBase living = (EntityLivingBase) entity;
+					
+					if(entity instanceof EntityVulture) return false;
+					if(entity instanceof EntityWaterMob) return false;
+					if(entity instanceof EntityCreeper) {
+						return living.getHealth() < 2; 
+					}
 					if (living.isBurning()) return living.getHealth() > living.getMaxHealth()/3;
 					if(living.getHealth() < 2.5f) return false;
 					for(Potion potion : PREY_EFFECTS) {
@@ -104,7 +110,7 @@ public class EntityVulture extends EntityMob {
 		tasks.addTask(5, new EntityAIWander(this, 1.0));
 		tasks.addTask(6, new EntityAILookIdle(this));
 		
-		targetTasks.addTask(0, new EntityAINearestAttackableTarget(this, EntityLivingBase.class, false));
+		targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityLivingBase.class, false));
 		targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
 		targetTasks.addTask(1, new EntityAIPickupItem(this, Items.rotten_flesh, 8, 1.1f, 0.3f));
 		

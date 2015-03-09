@@ -1,16 +1,25 @@
 {
     "vulture": {
-    "category": "hostile",
-    "sounds": [
-    "croak"
-    ]
+        "category" : "hostile",
+        "sounds" : [
+        "croak"
+        ]
     },
     
-        "seagull": {
-    "category": "neutral",
-    "sounds": [
-    "seagull1",
-    "seagull2"
-    ]
+    "seagull": {
+        "category" : "neutral",
+        "sounds" : [
+        "seagull1",
+        "seagull2"
+        ]
+    },
+    
+    "songbird" : {
+        "category" : "neutral",
+        "sounds" : [
+            "birds2",
+            "birds2_hall",
+            "birds2_strong"
+        ]
     }
 }

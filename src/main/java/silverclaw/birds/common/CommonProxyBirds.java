@@ -22,6 +22,8 @@ import silverclaw.birds.common.entity.EntityOstrich;
 import silverclaw.birds.common.entity.EntityPenguin;
 import silverclaw.birds.common.entity.EntitySeagull;
 import silverclaw.birds.common.entity.EntityVulture;
+import silverclaw.birds.common.entity.songbirds.EntitySongBird;
+import silverclaw.birds.common.entity.songbirds.EntitySparrow;
 import silverclaw.birds.common.item.ItemOstrichEgg;
 
 public class CommonProxyBirds {
@@ -48,6 +50,8 @@ public class CommonProxyBirds {
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(BirdItem.BREADCRUMBS.getInstance(), 8), Items.bread);
 		
+		GameRegistry.addSmelting(BirdItem.WILDBIRD_RAW.getInstance(), 
+				new ItemStack(BirdItem.WILDBIRD_COOKED.getInstance(), 1), 1);
 	}
 
 
@@ -74,6 +78,8 @@ public class CommonProxyBirds {
 		registerEntity(EntityCrow.class, 789);
 		registerEntity(EntitySeagull.class, 479);
 		registerEntity(EntityPenguin.class, 258);
+		registerEntity(EntitySongBird.class, 477);
+		registerEntity(EntitySparrow.class, 666);
 	}
 	
 	private final void registerEntity(Class<? extends EntityLiving> entityClass, int eggColor) {
@@ -101,7 +107,9 @@ public class CommonProxyBirds {
 		addSpawn(EntityPenguin.class, Type.COLD, 2, 4, 10, EnumCreatureType.CREATURE);
 		
 		addSpawn(EntitySeagull.class, Type.BEACH, 3, 4, 10, EnumCreatureType.CREATURE);
-		addSpawn(EntitySeagull.class, Type.OCEAN, 2, 3, 6, EnumCreatureType.CREATURE);
+		addSpawn(EntitySeagull.class, Type.OCEAN, 2, 3, 16, EnumCreatureType.CREATURE);
+		
+		addSpawn(EntitySparrow.class, Type.FOREST, 3, 6, 12, EnumCreatureType.CREATURE);
 
 	}
 

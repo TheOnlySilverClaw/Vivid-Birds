@@ -98,8 +98,6 @@ public class ModelKiwi extends ModelBase {
 		} else {
 			body.render(par7);
 		}
-		
-
 	}
 
 	@Override
