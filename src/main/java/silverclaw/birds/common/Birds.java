@@ -16,7 +16,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-@Mod(modid = Birds.MODID, version = "0.2.1", name="Bird Mod")
+@Mod(modid = Birds.MODID, version = "0.2.3", name="Bird Mod")
 public class Birds {
 	
 	public static final String MODID = "birdmod";
