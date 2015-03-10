@@ -10,8 +10,10 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemFishFood;
 import net.minecraft.item.ItemSeeds;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.biome.BiomeGenBase.TempCategory;
 
 public class EntityPenguin extends EntityPeacefulBird {
 
@@ -52,5 +54,17 @@ public class EntityPenguin extends EntityPeacefulBird {
 	public boolean isBreedingItem(ItemStack stack) {
 		
 		return stack.getItem() instanceof ItemFishFood;
+	}
+	
+	@Override
+	public void onLivingUpdate() {
+		
+		super.onLivingUpdate();
+		
+		if(rand.nextInt(50) == 0 && worldObj.getBiomeGenForCoords(getPosition()).getTempCategory()
+				== TempCategory.WARM && worldObj.getLight(getPosition()) > 8) {
+			damageEntity(DamageSource.inFire, 0.5f);
+			handleHealthUpdate((byte) 2);
+		}
 	}
 }

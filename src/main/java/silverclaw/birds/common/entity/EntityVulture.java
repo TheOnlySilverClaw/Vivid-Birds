@@ -101,7 +101,7 @@ public class EntityVulture extends EntityMob {
 			}
 		}, 3, 1.1, 1.4));
 		
-		tasks.addTask(4, new EntityAIFlyingBase(this, 1.3f, 500, 700, 80));
+		tasks.addTask(4, new EntityAIFlyingBase(this, 1.3f, 500, 400, 85));
 		
 		tasks.addTask(1, new EntityAISwimming(this));
 		

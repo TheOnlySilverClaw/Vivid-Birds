@@ -3,6 +3,7 @@ package silverclaw.birds.common.entity;
 import silverclaw.birds.common.BirdItem;
 import silverclaw.birds.common.Birds;
 import silverclaw.birds.common.FeatherVariant;
+import silverclaw.birds.common.entity.ai.EntityAILayEggInNest;
 
 import com.google.common.base.Predicate;
 
@@ -100,9 +101,11 @@ public class EntityOstrich extends EntityTameable {
 		tasks.addTask(4, new EntityAITempt(this, 1.1, Items.bread, false));
 		tasks.addTask(4, new EntityAITempt(this, 1.2, Item.getItemFromBlock(Blocks.hay_block), false));
 		tasks.addTask(5, new EntityAIFollowParent(this, 1.2));
+		tasks.addTask(5, new EntityAILayEggInNest(this));
 		tasks.addTask(5, new EntityAIPanic(this, 1.5));
 		tasks.addTask(7, new EntityAIWander(this, 1.0));
 		tasks.addTask(10, new EntityAILookIdle(this));
+		
 		
 		targetTasks.addTask(0, new EntityAIHurtByTarget(
 				this, true, EntityLivingBase.class));

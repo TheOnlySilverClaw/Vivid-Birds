@@ -131,7 +131,7 @@ public class ModelVulture extends ModelBase {
 		   wing_1.rotateAngleY = -0.8f;
 		   wing_2.rotateAngleY = -wing_1.rotateAngleY;
 		   
-		   wing_1.rotateAngleZ = MathHelper.cos(time * 0.8f) * limbSwing * speed - 0.6f;
+		   wing_1.rotateAngleZ = MathHelper.cos(time * 0.8f) * limbSwing * speed - 0.7f;
 		   wing_2.rotateAngleZ = -wing_1.rotateAngleZ;
 		   
 		   body.rotateAngleX = 1.2f;
