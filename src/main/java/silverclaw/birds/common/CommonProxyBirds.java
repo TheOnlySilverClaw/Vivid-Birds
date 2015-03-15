@@ -75,10 +75,10 @@ public class CommonProxyBirds {
 		registerEntity(EntityVulture.class, 234);
 		registerEntity(EntityOstrich.class, 456);
 		registerEntity(EntityKiwi.class, 567);
-		registerEntity(EntityCrow.class, 789);
+		//registerEntity(EntityCrow.class, 789);
 		registerEntity(EntitySeagull.class, 479);
 		registerEntity(EntityPenguin.class, 258);
-		registerEntity(EntitySongBird.class, 477);
+		//registerEntity(EntitySongBird.class, 477);
 		registerEntity(EntitySparrow.class, 666);
 	}
 	

@@ -67,8 +67,8 @@ public class ClientProxyBirds extends CommonProxyBirds {
 		RenderingRegistry.registerEntityRenderingHandler(EntityPenguin.class,
 				new RenderPenguin(manager, new ModelPenguin(), 0.5f));
 		
-		RenderingRegistry.registerEntityRenderingHandler(EntitySongBird.class, 
-				new RenderSongbird(manager, new ModelSongbird(), 0.2f));
+		//RenderingRegistry.registerEntityRenderingHandler(EntitySongBird.class, 
+			//	new RenderSongbird(manager, new ModelSongbird(), 0.2f));
 		
 		RenderingRegistry.registerEntityRenderingHandler(EntitySparrow.class, 
 				new RenderSparrow(manager, new ModelSongbird(), 0.2f));

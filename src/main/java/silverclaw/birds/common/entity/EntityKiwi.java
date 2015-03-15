@@ -32,7 +32,6 @@ public class EntityKiwi extends EntityPeacefulBird {
 		super(worldObj);
 		
 		setSize(0.9f, 0.8f);
-		setGrowingAge(rand.nextInt(5000) - 1000);
 		
 		tasks.addTask(0, new EntityAIAvoidEntity(this, new Predicate<Entity>() {
 			
@@ -52,7 +51,7 @@ public class EntityKiwi extends EntityPeacefulBird {
 	public EntityAgeable createChild(EntityAgeable arg0) {
 
 		EntityKiwi baby = new EntityKiwi(worldObj);
-		baby.setGrowingAge(-4000);
+		baby.setGrowingAge(-24000);
 		return baby;
 	}
 

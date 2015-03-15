@@ -206,6 +206,8 @@ public class EntityOstrich extends EntityTameable {
 		ItemStack stack = entityplayer.getHeldItem();
 		Item item = (stack == null ? null : stack.getItem());
 		
+		boolean interacted = false;
+		
 		if(isChild()) {
 			
 		} else {
@@ -221,33 +223,37 @@ public class EntityOstrich extends EntityTameable {
 					}
 				}
 			} else {
-				if(isSaddled()) {
-					if(getHealth() < getMaxHealth()) {
-						boolean healed = false;
-						if(item == BirdItem.BREADCRUMBS.getInstance()) {
-							heal(0.2f);
-							healed = true;
-						} else if(item == Items.wheat) {
-							heal(0.5f);
-							healed = true;
-						} else if(item == Items.bread) {
-							heal(1f);
-							healed = true;
-						} else if(item == Item.getItemFromBlock(Blocks.hay_block)) {
-							heal(5f);
-						}
-						if(healed) {
-							stack.stackSize--;
-							handleHealthUpdate((byte) 0);
-						}
-					} else if(riddenByEntity == null) {
-						entityplayer.mountEntity(this);
+				boolean healed = false;
+				if(getHealth() < getMaxHealth()) {
+					if(item == BirdItem.BREADCRUMBS.getInstance()) {
+						heal(0.2f);
+						healed = true;
+					} else if(item == Items.wheat) {
+						heal(0.5f);
+						healed = true;
+					} else if(item == Items.bread) {
+						heal(1f);
+						healed = true;
+					} else if(item == Item.getItemFromBlock(Blocks.hay_block)) {
+						heal(5f);
+						healed = true;
 					}
-				} else {
-					if(item == Items.saddle) {
+					if(healed) {
 						stack.stackSize--;
-						setSaddled(true);
-						setTamed(true);
+						handleHealthUpdate((byte) 0);
+					}
+				}
+				if(!healed) {
+					if(isSaddled()) {
+						if(riddenByEntity == null) {
+							entityplayer.mountEntity(this);
+						}
+					} else {
+						if(item == Items.saddle) {
+							stack.stackSize--;
+							setSaddled(true);
+							setTamed(true);
+						}
 					}
 				}
 			}
@@ -308,8 +314,9 @@ public class EntityOstrich extends EntityTameable {
 	@Override
 	public void handleHealthUpdate(byte update) {
 		
+		super.handleHealthUpdate(update);
+		
 		if(update == 0) {
-			System.out.println(getHealth());
 			double gauss = rand.nextGaussian();
 			worldObj.spawnParticle(EnumParticleTypes.HEART, posX, posY + 1.5f, posZ, 
 					0.03 * gauss, 0.03 * gauss, 0.03 * gauss, 5, 4, 6, 1);

@@ -111,9 +111,8 @@ public class EntityLyrebird extends EntityPeacefulBird {
 		
 		super(worldObj);
 		setSize(0.9f, 1.1f);
-		setGrowingAge(rand.nextInt(16000) - 1000);
 		tasks.addTask(5, new EntityAITempt(this, 1.35f, Items.melon_seeds, false));
-		
+
 		livingSounds = fillSounds(LIVING_SOUNDS, 5);
 		hurtSounds = fillSounds(HURT_SOUNDS, 3);
 		deathSound = randomSound(DEATH_SOUNDS);
@@ -137,7 +136,8 @@ public class EntityLyrebird extends EntityPeacefulBird {
 
 	@Override
 	public boolean isBreedingItem(ItemStack stack) {
-		return stack.getItem() == Items.melon_seeds;
+
+		return stack != null && stack.getItem() == Items.melon_seeds;
 	}
 
 	@Override

@@ -12,7 +12,7 @@ import net.minecraft.util.BlockPos;
 
 public class EntityAILayEggInNest extends EntityAIBase {
 	
-	protected final static int nestTimer = 50;
+	protected final static int nestTimer = 1500;
 
 	protected final EntityLiving entity;
 	

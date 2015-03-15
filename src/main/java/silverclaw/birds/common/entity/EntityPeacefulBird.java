@@ -25,7 +25,7 @@ public abstract class EntityPeacefulBird extends EntityAnimal {
 		tasks.addTask(1, new EntityAIPanic(this, 1.3f));
 		tasks.addTask(2, new EntityAISwimming(this));
 		tasks.addTask(3, new EntityAIWander(this, 1.15f));
-		tasks.addTask(4, new EntityAIMate(this, 1.05f));
+		tasks.addTask(2, new EntityAIMate(this, 1.05f));
 		tasks.addTask(4, new EntityAITempt(this, 1.15f, BirdItem.BREADCRUMBS.getInstance(), true));
 		tasks.addTask(5, new EntityAIFollowParent(this, 1.1f));
 		tasks.addTask(6, new EntityAILookIdle(this));
