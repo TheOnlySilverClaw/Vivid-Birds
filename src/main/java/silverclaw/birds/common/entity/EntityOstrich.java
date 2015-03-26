@@ -95,7 +95,7 @@ public class EntityOstrich extends EntityTameable {
 		tasks.addTask(1, new EntityAISwimming(this));
 		tasks.addTask(3, new EntityAIEatGrass(this));
 		tasks.addTask(2, new EntityAILeapAtTarget(this, 0.6f));
-		tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityMob.class, 1.6f, true));
+		tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityLivingBase.class, 1.6f, true));
 		tasks.addTask(4, new EntityAITempt(this, 1.0, Items.wheat, false));
 		tasks.addTask(4, new EntityAITempt(this, 1.05, BirdItem.BREADCRUMBS.getInstance(), false));
 		tasks.addTask(4, new EntityAITempt(this, 1.1, Items.bread, false));
@@ -167,6 +167,9 @@ public class EntityOstrich extends EntityTameable {
 			entityDropItem(new ItemStack(Items.feather, 2, 
 					FeatherVariant.OSTRICH.getMetaData()), 0.3f);
 		}
+		if(isSaddled()) {
+			dropItem(Items.saddle, 1);
+		}
 	}
 
 	@Override
@@ -215,8 +218,10 @@ public class EntityOstrich extends EntityTameable {
 				if(isSaddled()) {
 					if(riddenByEntity == null) {
 						if(entityplayer.isSneaking()) {
-							dropItem(Items.saddle, 1);
-							setSaddled(false);
+							if(!worldObj.isRemote) {
+								dropItem(Items.saddle, 1);
+								setSaddled(false);
+							}
 						} else {
 							entityplayer.mountEntity(this);
 						}
@@ -319,7 +324,7 @@ public class EntityOstrich extends EntityTameable {
 		if(update == 0) {
 			double gauss = rand.nextGaussian();
 			worldObj.spawnParticle(EnumParticleTypes.HEART, posX, posY + 1.5f, posZ, 
-					0.03 * gauss, 0.03 * gauss, 0.03 * gauss, 5, 4, 6, 1);
+					0.03 * gauss, 0.03 * gauss, 0.03 * gauss, 5, 5, 4, 4, 3, 3);
 		}
 	}
 }

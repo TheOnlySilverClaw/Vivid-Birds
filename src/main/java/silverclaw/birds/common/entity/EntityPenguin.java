@@ -21,7 +21,6 @@ public class EntityPenguin extends EntityPeacefulBird {
 		
 		super(worldObj);
 		setSize(0.7f, 1);
-		setGrowingAge(0);
 		
 		tasks.addTask(5, new EntityAITempt(this, 1.2f, Items.fish, false));
 	}
@@ -30,7 +29,7 @@ public class EntityPenguin extends EntityPeacefulBird {
 	public EntityAgeable createChild(EntityAgeable other) {
 
 		EntityPenguin penguin = new EntityPenguin(worldObj);
-		penguin.setGrowingAge(-36000 - rand.nextInt(2000));
+		penguin.setGrowingAge(-36000);
 		return penguin;
 	}
 	

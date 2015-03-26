@@ -8,6 +8,8 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import silverclaw.birds.common.FeatherVariant;
+import silverclaw.birds.common.entity.ai.EntityAIFlyingAvoidAttacker;
+import silverclaw.birds.common.entity.ai.EntityAIFlyingAvoidEnemies;
 import silverclaw.birds.common.entity.ai.EntityAIFlyingBase;
 import silverclaw.birds.common.entity.ai.EntityAIPickupItem;
 
@@ -17,11 +19,10 @@ public class EntitySeagull extends EntityPeacefulBird {
 		
 		super(worldObj);
 		setSize(0.8f, 0.9f);
-		setGrowingAge(rand.nextInt(10000) - 1000);
 		
 		tasks.addTask(5, new EntityAITempt(this, 1.15f, Items.fish, false));
-		tasks.addTask(2, new EntityAIFlyingBase(this, 1.3f, 800, 400, 80));
-
+		tasks.addTask(2, new EntityAIFlyingAvoidEnemies(this, 1.3f, 800, 400, 80,
+				20, getMaxHealth(), EntityMob.class, 20));
 		targetTasks.addTask(1, new EntityAIPickupItem(this, Items.fish, 8, 1.1f, 0.3f));
 		targetTasks.addTask(2, new EntityAIPickupItem(this, Items.cooked_fish, 6, 1.0f, 0.3f));
 

@@ -49,12 +49,12 @@ public class ModelLyrebird extends ModelBase {
 		leg_1 = new ModelRenderer(this, 0, 12);
 		leg_1.setTextureSize(32, 32 );
 		leg_1.addBox(-0.5f, 0f, 0f, 1, 4, 0);
-		leg_1.setRotationPoint(-1f, 0f, 0f);
+		leg_1.setRotationPoint(-1f, 2f, 1f);
 
 		leg_2 = new ModelRenderer(this, 0, 12);
 		leg_2.setTextureSize(32, 32 );
 		leg_2.addBox(-0.5f, 0f, 0f, 1, 4, 0);
-		leg_2.setRotationPoint(1f, 0f, 0f);
+		leg_2.setRotationPoint(1f, 2f, 1f);
 
 		foot_1 = new ModelRenderer(this, 0, 14 );
 		foot_1.setTextureSize(32, 32 );
@@ -74,7 +74,7 @@ public class ModelLyrebird extends ModelBase {
 		wing_2 = new ModelRenderer(this, 0, 10);
 		wing_2.setTextureSize(32, 32 );
 		wing_2.addBox(-0.5f, 0f, 0f, 1, 4, 6);
-		wing_2.setRotationPoint(1.5f, -1f, -3.5f);
+		wing_2.setRotationPoint(1.5f, -1f, -3f);
 		
 		body.addChild(head);
 		head.addChild(beak);
@@ -100,13 +100,13 @@ public class ModelLyrebird extends ModelBase {
 		if(isChild) {
 			GlStateManager.pushMatrix();
 			GlStateManager.scale(0.5f, 0.5f, 0.7f);
-			GlStateManager.translate(0, 22f * par7, 0);
+			GlStateManager.translate(0, 25f * par7, 0);
 			body.render(par7);
 			GlStateManager.popMatrix();
 		} else {
 			GlStateManager.pushMatrix();
-			GlStateManager.scale(1.1f, 1.1f, 1.4f);
-			GlStateManager.translate(0, -2.5f*par7, 0);
+			GlStateManager.scale(1.2f, 1.2f, 1.45f);
+			GlStateManager.translate(0, -4f*par7, 0);
 			body.render(par7);
 			GlStateManager.popMatrix();
 		}

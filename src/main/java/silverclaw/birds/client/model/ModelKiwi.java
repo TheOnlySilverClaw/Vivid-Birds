@@ -32,23 +32,23 @@ public class ModelKiwi extends ModelBase {
 		
 		leg_1 = new ModelRenderer(this, 20, 21);
 		leg_1.setTextureSize(32, 32);
-		leg_1.addBox(-0.5F, -3F, 0F, 1, 6, 0);
-		leg_1.setRotationPoint(1F, 5F, 0F);
+		leg_1.addBox(-0.5F, -0F, 0F, 1, 6, 0);
+		leg_1.setRotationPoint(1F, 2.5F, 1F);
 		
 		leg_2 = new ModelRenderer(this, 20, 21);
 		leg_2.setTextureSize(32, 32);
-		leg_2.addBox(-0.5F, -3F, 0F, 1, 6, 0);
-		leg_2.setRotationPoint(-1F, 5F, 0F);
+		leg_2.addBox(-0.5F, -0F, 0F, 1, 6, 0);
+		leg_2.setRotationPoint(-1F, 2F, 1F);
 		
 		leg_3 = new ModelRenderer(this, 20, 25);
 		leg_3.setTextureSize(32, 32);
-		leg_3.addBox(-0.5F, 0F, -1F, 1, 0, 2);
-		leg_3.setRotationPoint(0F, 2F, -1F);
+		leg_3.addBox(-0.5F, 0F, 0F, 1, 0, 2);
+		leg_3.setRotationPoint(0F, 6F, -2F);
 		
 		leg_4 = new ModelRenderer(this, 20, 25);
 		leg_4.setTextureSize(32, 32);
-		leg_4.addBox(-0.5F, 0F, -1F, 1, 0, 2);
-		leg_4.setRotationPoint(0F, 2F, -1F);
+		leg_4.addBox(-0.5F, 0F, 0F, 1, 0, 2);
+		leg_4.setRotationPoint(0F, 6F, -2.5F);
 		
 		head = new ModelRenderer(this, 0, 0);
 		head.setTextureSize(32, 32);
@@ -62,13 +62,13 @@ public class ModelKiwi extends ModelBase {
 		
 		wing_1 = new ModelRenderer(this, 10, 7);
 		wing_1.setTextureSize(32, 32);
-		wing_1.addBox(-0.5F, -2F, -3.5F, 1, 4, 7);
-		wing_1.setRotationPoint(3.5F, 0F, 0F);
+		wing_1.addBox(-0.5F, -1F, 0F, 1, 4, 7);
+		wing_1.setRotationPoint(3F, -2F, -2F);
 		
 		wing_2 = new ModelRenderer(this, 10, 7);
 		wing_2.setTextureSize(32, 32);
-		wing_2.addBox(-0.5F, -2F, -3.5F, 1, 4, 7);
-		wing_2.setRotationPoint(-3.5F, 0F, 0F);
+		wing_2.addBox(-0.5F, -0F, -0F, 1, 4, 7);
+		wing_2.setRotationPoint(-3F, -2F, -2F);
 		
 		body.addChild(head);
 		head.addChild(beak);
@@ -92,11 +92,15 @@ public class ModelKiwi extends ModelBase {
 		if(isChild) {
 			GlStateManager.pushMatrix();
 			GlStateManager.scale(0.5, 0.5, 0.5);
-			GlStateManager.translate(0, par7 * 19, 0);
+			GlStateManager.translate(0, par7 * 18, 0);
 			body.render(par7);
 			GlStateManager.popMatrix();
 		} else {
+			GlStateManager.pushMatrix();
+			GlStateManager.scale(0.9, 0.9, 0.9);
+			GlStateManager.translate(0, par7 * 2, 0);
 			body.render(par7);
+			GlStateManager.popMatrix();
 		}
 	}
 
@@ -105,22 +109,23 @@ public class ModelKiwi extends ModelBase {
 			float yaw, float pitch, float f6, Entity entity) {
 		        
 
-		head.rotateAngleX = pitch / 57.3f + 0.2f;
+		head.rotateAngleX = pitch / 57.3f + 0.6f;
 		head.rotateAngleY = yaw / (57.3f * 2f);
 		
 		beak.rotateAngleX = 0.2f;
 		
+		body.rotateAngleX = -0.4f;
 		
-        wing_1.rotateAngleX = MathHelper.cos(time * 0.662f) * 0.5f * speed + 0.3f;
+        wing_1.rotateAngleX = MathHelper.cos(time * 0.662f) * 0.5f * speed + 0.1f;
         wing_2.rotateAngleX = wing_1.rotateAngleX;
         
-        wing_1.rotateAngleY = Math.max(MathHelper.cos(time * 0.662f) * 1.5f * speed, 0.2f);
+        wing_1.rotateAngleY = Math.max(MathHelper.cos(time * 0.662f) * 1.1f * speed, 0.1f);
         wing_2.rotateAngleY = -wing_1.rotateAngleY;
         
-        wing_1.rotateAngleZ = Math.max(MathHelper.cos(time * 0.662f) * 1.5f * speed, 0.2f);
+        wing_1.rotateAngleZ = -Math.max(MathHelper.cos(time * 0.662f) * 1.5f * speed, 0.2f);
         wing_2.rotateAngleZ = -wing_1.rotateAngleZ;
         
-		leg_1.rotateAngleX = MathHelper.cos(time * 0.5f) * 1.4f * speed;
-		leg_2.rotateAngleX = MathHelper.cos(time * 0.5f + (float) Math.PI) * 1.4f * speed;
+		leg_1.rotateAngleX = MathHelper.cos(time * 0.5f) * 1.4f * speed +0.4f;
+		leg_2.rotateAngleX = MathHelper.cos(time * 0.5f + (float) Math.PI) * 1.4f * speed +0.4f;
 	}
 }

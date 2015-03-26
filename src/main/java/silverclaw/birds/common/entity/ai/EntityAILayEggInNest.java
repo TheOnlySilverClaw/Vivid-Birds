@@ -57,13 +57,6 @@ public class EntityAILayEggInNest extends EntityAIBase {
 
 
 	@Override
-	public void resetTask() {
-		// TODO Auto-generated method stub
-		super.resetTask();
-	}
-
-
-	@Override
 	public void updateTask() {
 	
 		BlockPos pos = entity.getPosition().down();

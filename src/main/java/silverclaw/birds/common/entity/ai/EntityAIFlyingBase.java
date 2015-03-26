@@ -8,13 +8,14 @@ public class EntityAIFlyingBase extends EntityAIBase {
 
 	private final float DEG = (float) (Math.PI / 180);
 
-	private final EntityLiving entity;
+	protected final EntityLiving entity;
+	
 	private final int flightTime;
 	private final int walkTime;
 	private final int targetFlightHeight;
 	private final float speed;
 	
-	private int flightCounter;
+	protected int flightCounter;
 	private int turnCounter;
 	
 	private final double DESCEND_FACTOR = ((float) -2/(float) 3);
@@ -83,7 +84,7 @@ public class EntityAIFlyingBase extends EntityAIBase {
 	@Override
 	public void resetTask() {
 
-		super.resetTask();
+		flightCounter = -entity.getRNG().nextInt(walkTime);
 	}
 
 	@Override

@@ -172,7 +172,7 @@ public class ModelSeagull extends ModelBase {
  		   leg_1.rotateAngleX = MathHelper.cos(time * 0.762f) * 1.4f * speed;
  		   leg_2.rotateAngleX = MathHelper.cos(time * 0.762f + (float) Math.PI) * 1.4f * speed;
  		   
- 		   wing_1.rotateAngleX = MathHelper.cos(time * 0.662f) * limbSwing * speed + 0.25f;
+ 		   wing_1.rotateAngleX = MathHelper.cos(time * 0.662f) * 2*limbSwing * speed + 0.25f;
  		   wing_2.rotateAngleX = wing_1.rotateAngleX;
  		   
  		   wing_2.rotateAngleZ = Math.max(MathHelper.cos(time * 0.662f) * 1.5f * speed, 0.1f);

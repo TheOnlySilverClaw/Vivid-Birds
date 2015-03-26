@@ -1,5 +1,6 @@
 package silverclaw.birds.common.entity;
 
+import silverclaw.birds.common.BirdItem;
 import silverclaw.birds.common.Birds;
 
 import com.google.common.base.Predicate;
@@ -33,6 +34,7 @@ public class EntityKiwi extends EntityPeacefulBird {
 		
 		setSize(0.9f, 0.8f);
 		
+		
 		tasks.addTask(0, new EntityAIAvoidEntity(this, new Predicate<Entity>() {
 			
 			@Override
@@ -40,9 +42,9 @@ public class EntityKiwi extends EntityPeacefulBird {
 				
 				return entity instanceof EntityMob || entity instanceof EntityPlayer;
 			}
-		}, 10f, 1.2, 1.4));
+		}, 10f, 1.2, 1.45));
 
-		tasks.addTask(0, new EntityAIFleeSun(this, 1.1f));
+		tasks.addTask(0, new EntityAIFleeSun(this, 1.2f));
 		tasks.addTask(5, new EntityAITempt(this, 1.15f, Items.melon_seeds, true));
 
 	}
@@ -64,9 +66,10 @@ public class EntityKiwi extends EntityPeacefulBird {
 	@Override
 	protected void dropFewItems(boolean drop, int number) {
 		
-		if(rand.nextFloat() < 0.2f) dropItem(Items.melon, 1);
+		if(rand.nextFloat() < 0.1f) dropItem(Items.melon, 1);
 		
-		dropItem(isBurning() ? Items.cooked_chicken : Items.chicken, rand.nextInt(2));
+		dropItem(isBurning() ? BirdItem.WILDBIRD_COOKED.getInstance()
+				: BirdItem.WILDBIRD_RAW.getInstance(), rand.nextInt(2));
 	}
 	
 	@Override

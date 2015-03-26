@@ -27,6 +27,7 @@ import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase.TempCategory;
 import silverclaw.birds.common.FeatherVariant;
+import silverclaw.birds.common.entity.ai.EntityAIFlyingAvoidAttacker;
 import silverclaw.birds.common.entity.ai.EntityAIFlyingBase;
 import silverclaw.birds.common.entity.ai.EntityAIPickupItem;
 
@@ -101,7 +102,8 @@ public class EntityVulture extends EntityMob {
 			}
 		}, 3, 1.1, 1.4));
 		
-		tasks.addTask(4, new EntityAIFlyingBase(this, 1.3f, 500, 400, 85));
+		tasks.addTask(4, new EntityAIFlyingAvoidAttacker(
+				this, 1.3f, 500, 400, 85, 20, getMaxHealth() / 2));
 		
 		tasks.addTask(1, new EntityAISwimming(this));
 		

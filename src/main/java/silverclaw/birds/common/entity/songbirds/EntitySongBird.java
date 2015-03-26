@@ -1,12 +1,14 @@
 package silverclaw.birds.common.entity.songbirds;
 
 import silverclaw.birds.common.entity.EntityPeacefulBird;
+import silverclaw.birds.common.entity.ai.EntityAIFlyingAvoidEnemies;
 import silverclaw.birds.common.entity.ai.EntityAIFlyingBase;
 
 import com.google.common.base.Predicate;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAvoidEntity;
 import net.minecraft.entity.passive.EntityAmbientCreature;
@@ -30,7 +32,8 @@ public class EntitySongBird extends EntityPeacefulBird {
 				return !(entity instanceof EntitySongBird);
 			}
 		}, 4, 0.8, 1.2));
-		tasks.addTask(5, new EntityAIFlyingBase(this, 0.15f, 100, 50, 75));
+		tasks.addTask(5, new EntityAIFlyingAvoidEnemies(this, 0.15f, 100, 50, 75, 
+				20, getMaxHealth(), EntityLivingBase.class, 15));
 	}
 
 	@Override
