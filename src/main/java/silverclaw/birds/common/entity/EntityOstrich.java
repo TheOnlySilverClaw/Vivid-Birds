@@ -327,4 +327,9 @@ public class EntityOstrich extends EntityTameable {
 					0.03 * gauss, 0.03 * gauss, 0.03 * gauss, 5, 5, 4, 4, 3, 3);
 		}
 	}
+
+	@Override
+	public Entity getOwner() {
+		return null;
+	}
 }
