@@ -10,7 +10,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid = Birds.MODID, version = "0.2.3", name="Bird Mod")
+@Mod(modid = Birds.MODID, version = "1.0.0", name="Bird Mod")
 public class Birds {
 	
 	public static final String MODID = "birdmod";
