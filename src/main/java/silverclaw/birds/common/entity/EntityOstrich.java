@@ -2,7 +2,6 @@ package silverclaw.birds.common.entity;
 
 import silverclaw.birds.common.BirdItem;
 import silverclaw.birds.common.FeatherVariant;
-import silverclaw.birds.common.entity.ai.EntityAILayEggInNest;
 
 import com.google.common.base.Predicate;
 
