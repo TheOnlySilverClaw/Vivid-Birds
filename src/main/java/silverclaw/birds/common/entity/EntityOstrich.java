@@ -37,21 +37,11 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 
 public class EntityOstrich extends EntityTameable {
-
-	private static final int EGG_TIMER = 50000;
-	
-	private float battleExperience;
-	private int timeUntilNextEgg;
-		
-	private boolean isJumping;
 	
 	public EntityOstrich(World worldObj) {
 		
 		super(worldObj);
 		setSize(1.5f, 2.0f);
-		battleExperience = 0.0f;
-		timeUntilNextEgg = EGG_TIMER;
-		isJumping = false;
 		stepHeight = 1.2f;
 			
 		tasks.addTask(0, new EntityAIAvoidEntity(this, new Predicate<Entity>() {
@@ -89,11 +79,9 @@ public class EntityOstrich extends EntityTameable {
 		tasks.addTask(4, new EntityAITempt(this, 1.1, Items.bread, false));
 		tasks.addTask(4, new EntityAITempt(this, 1.2, Item.getItemFromBlock(Blocks.hay_block), false));
 		tasks.addTask(5, new EntityAIFollowParent(this, 1.2));
-		tasks.addTask(5, new EntityAILayEggInNest(this));
 		tasks.addTask(5, new EntityAIPanic(this, 1.5));
 		tasks.addTask(7, new EntityAIWander(this, 1.0));
 		tasks.addTask(10, new EntityAILookIdle(this));
-		
 		
 		targetTasks.addTask(0, new EntityAIHurtByTarget(
 				this, true, EntityLivingBase.class));
@@ -128,7 +116,9 @@ public class EntityOstrich extends EntityTameable {
 	
 	@Override
 	public EntityAgeable createChild(EntityAgeable parent) {
-		return null;
+		EntityOstrich child = new EntityOstrich(worldObj);
+		child.setGrowingAge(-3000);
+		return child;
 	}
 
 	@Override
@@ -136,10 +126,9 @@ public class EntityOstrich extends EntityTameable {
 		
 		super.applyEntityAttributes();
 		getAttributeMap().registerAttribute(SharedMonsterAttributes.attackDamage);
-		getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(4);
+		getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(5);
 		getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(10);
-		getEntityAttribute(SharedMonsterAttributes.maxHealth)
-		.setBaseValue(isTamed() ? 20 : 16);
+		getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(16);
 		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.25);
 	}
 	
@@ -164,15 +153,6 @@ public class EntityOstrich extends EntityTameable {
 	public boolean isOnLadder() {
 		return false;
 	}
-
-	@Override
-	public boolean attackEntityAsMob(Entity target) {
-    	
-    	boolean success = target.attackEntityFrom(DamageSource.causeMobDamage(this),
-    			(float) getEntityAttribute(SharedMonsterAttributes.attackDamage).getBaseValue() + battleExperience);
-    	if(success && battleExperience < 5.0f) battleExperience += 0.25f;
-    	return success;
-    }
 	
 
 	@Override
@@ -184,11 +164,6 @@ public class EntityOstrich extends EntityTameable {
 			entityDropItem(new ItemStack(Items.feather, rand.nextInt(2),
 					FeatherVariant.OSTRICH.getMetaData()), 0.5f);
 		}
-		if (!this.worldObj.isRemote && !this.isChild() && --this.timeUntilNextEgg <= 0) {
-		    this.playSound("mob.chicken.plop", 1.0F, (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F + 1.0F);
-		    this.dropItem(BirdItem.OSTRICH_EGG.getInstance(), 1);
-		    this.timeUntilNextEgg = this.rand.nextInt(10000) + 50000;
-        }
 	}
 	
 	@Override
