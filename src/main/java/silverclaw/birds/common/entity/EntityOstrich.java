@@ -16,6 +16,7 @@ import net.minecraft.entity.ai.EntityAIFollowParent;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILeapAtTarget;
 import net.minecraft.entity.ai.EntityAILookIdle;
+import net.minecraft.entity.ai.EntityAIMate;
 import net.minecraft.entity.ai.EntityAIPanic;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAITargetNonTamed;
@@ -31,13 +32,14 @@ import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 
 public class EntityOstrich extends EntityTameable {
 	
 	public EntityOstrich(World worldObj) {
-		
+
 		super(worldObj);
 		setSize(1.5f, 2.0f);
 		stepHeight = 1.2f;
@@ -76,6 +78,7 @@ public class EntityOstrich extends EntityTameable {
 		tasks.addTask(4, new EntityAITempt(this, 1.05, BirdItem.BREADCRUMBS.getInstance(), false));
 		tasks.addTask(4, new EntityAITempt(this, 1.1, Items.bread, false));
 		tasks.addTask(4, new EntityAITempt(this, 1.2, Item.getItemFromBlock(Blocks.hay_block), false));
+		tasks.addTask(5, new EntityAIMate(this, 1.1));
 		tasks.addTask(5, new EntityAIFollowParent(this, 1.2));
 		tasks.addTask(5, new EntityAIPanic(this, 1.5));
 		tasks.addTask(7, new EntityAIWander(this, 1.0));
@@ -115,7 +118,7 @@ public class EntityOstrich extends EntityTameable {
 	@Override
 	public EntityAgeable createChild(EntityAgeable parent) {
 		EntityOstrich child = new EntityOstrich(worldObj);
-		child.setGrowingAge(-3000);
+		child.setGrowingAge(-30000);
 		return child;
 	}
 
@@ -131,10 +134,22 @@ public class EntityOstrich extends EntityTameable {
 	}
 	
 	@Override
+	public boolean attackEntityAsMob(Entity target) {
+		
+		DamageSource damage = DamageSource.causeMobDamage(this);
+		float amount = (float) getEntityAttribute(
+				SharedMonsterAttributes.attackDamage).getAttributeValue();
+		return target.attackEntityFrom(damage, amount);
+	}
+	
+	@Override
 	protected void dropFewItems(boolean drop, int amount) {
 		
 
-		if(drop) dropItem(isBurning() ? Items.cooked_beef : Items.beef, 1);
+		if(drop) dropItem(
+				isBurning() ? Items.cooked_beef : Items.beef,
+				rand.nextInt(2)
+				);
 			
 		if(rand.nextBoolean()) {
 			dropItem(Items.leather, 1);
@@ -167,64 +182,45 @@ public class EntityOstrich extends EntityTameable {
 	@Override
 	public boolean interact(EntityPlayer entityplayer)	{
 		
+		if(isChild()) return false;
+
 		ItemStack stack = entityplayer.getHeldItem();
 		Item item = (stack == null ? null : stack.getItem());
-		
-		boolean interacted = false;
-		
-		if(isChild()) {
-			
-		} else {
-			if(item == null || stack.stackSize < 1) {
-				if(isSaddled()) {
-					if(riddenByEntity == null) {
-						if(entityplayer.isSneaking()) {
-							if(!worldObj.isRemote) {
-								dropItem(Items.saddle, 1);
-								setSaddled(false);
-							}
-						} else {
-							entityplayer.mountEntity(this);
-						}
-					}
-				}
-			} else {
-				boolean healed = false;
-				if(getHealth() < getMaxHealth()) {
-					if(item == BirdItem.BREADCRUMBS.getInstance()) {
-						heal(0.2f);
-						healed = true;
-					} else if(item == Items.wheat) {
-						heal(0.5f);
-						healed = true;
-					} else if(item == Items.bread) {
-						heal(1f);
-						healed = true;
-					} else if(item == Item.getItemFromBlock(Blocks.hay_block)) {
-						heal(5f);
-						healed = true;
-					}
-					if(healed) {
-						stack.stackSize--;
-						handleHealthUpdate((byte) 0);
-					}
-				}
-				if(!healed) {
-					if(isSaddled()) {
-						if(riddenByEntity == null) {
-							entityplayer.mountEntity(this);
+				
+		// empty hands?
+		if(item == null || stack.stackSize < 1) {
+			if(isSaddled()) {
+				if(riddenByEntity == null) {
+					if(entityplayer.isSneaking()) {
+						if(!worldObj.isRemote) {
+							dropItem(Items.saddle, 1);
+							setSaddled(false);
 						}
 					} else {
-						if(item == Items.saddle) {
-							stack.stackSize--;
-							setSaddled(true);
-							setTamed(true);
-						}
+						entityplayer.mountEntity(this);
 					}
 				}
 			}
+			return true;
 		}
-		return true;
+		
+		if(item == Items.wheat) {
+			if(getHealth() < getMaxHealth()) {
+				heal(1);
+				handleHealthUpdate((byte) 0);
+				stack.stackSize--;
+				return true;
+			}
+		}
+
+		if(item == Items.saddle) {
+			stack.stackSize--;
+			setSaddled(true);
+			setTamed(true);
+			return true;
+		}
+		
+		return super.interact(entityplayer);
 	}
 	
 	@Override
@@ -278,19 +274,13 @@ public class EntityOstrich extends EntityTameable {
 	}
 	
 	@Override
-	public void handleHealthUpdate(byte update) {
-		
-		super.handleHealthUpdate(update);
-		
-		if(update == 0) {
-			double gauss = rand.nextGaussian();
-			worldObj.spawnParticle(EnumParticleTypes.HEART, posX, posY + 1.5f, posZ, 
-					0.03 * gauss, 0.03 * gauss, 0.03 * gauss, 5, 5, 4, 4, 3, 3);
-		}
-	}
-
-	@Override
 	public Entity getOwner() {
 		return null;
+	}
+	
+	@Override
+	public boolean isBreedingItem(ItemStack stack) {
+		System.out.println("breed?: " + super.isBreedingItem(stack));
+		return super.isBreedingItem(stack);
 	}
 }

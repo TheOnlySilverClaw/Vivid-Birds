@@ -30,7 +30,7 @@ public class EntitySeagull extends EntityPeacefulBird {
 	public EntityAgeable createChild(EntityAgeable other) {
 
 		EntitySeagull seagull = new EntitySeagull(worldObj);
-		seagull.setGrowingAge(-20000 + rand.nextInt(1000));
+		seagull.setGrowingAge(-20000);
 		return seagull;
 	}
 	

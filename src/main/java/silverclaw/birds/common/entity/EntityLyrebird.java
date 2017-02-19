@@ -123,8 +123,11 @@ public class EntityLyrebird extends EntityPeacefulBird {
 
 	@Override
 	public EntityAgeable createChild(EntityAgeable parent) {
-		return new EntityLyrebird(worldObj, this.getLivingSound(), 
+		EntityLyrebird child = new EntityLyrebird(
+				worldObj, this.getLivingSound(), 
 				((EntityLyrebird) parent).getHurtSound());
+		child.setGrowingAge(-22000);
+		return child;
 	}
 
 	@Override

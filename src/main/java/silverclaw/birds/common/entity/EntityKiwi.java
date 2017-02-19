@@ -43,7 +43,7 @@ public class EntityKiwi extends EntityPeacefulBird {
 	public EntityAgeable createChild(EntityAgeable arg0) {
 
 		EntityKiwi baby = new EntityKiwi(worldObj);
-		baby.setGrowingAge(-24000);
+		baby.setGrowingAge(-20000);
 		return baby;
 	}
 
