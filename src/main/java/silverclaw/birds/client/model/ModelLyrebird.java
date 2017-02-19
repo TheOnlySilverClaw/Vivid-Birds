@@ -100,7 +100,7 @@ public class ModelLyrebird extends ModelBase {
 		if(isChild) {
 			GlStateManager.pushMatrix();
 			GlStateManager.scale(0.5f, 0.5f, 0.7f);
-			GlStateManager.translate(0, 25f * par7, 0);
+			GlStateManager.translate(0, 22f * par7, 0);
 			body.render(par7);
 			GlStateManager.popMatrix();
 		} else {
