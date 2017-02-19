@@ -32,8 +32,15 @@ public class ConfigHandler {
 	public int[] getSpawnConfig(Class<? extends EntityLivingBase> living, Type biomeType,
 			int defaultSpawnProbability, int defaultMinSpawn, int defaultMaxSpawn) {
 	
-		return config.get(CATEGORY_SPAWNING, Birds.getEntityName(living) + "_" + biomeType.name(), 
-				new int [] { defaultSpawnProbability, defaultMinSpawn, defaultMaxSpawn }).getIntList();
+		return config.get(CATEGORY_SPAWNING,
+				living.getClass().getName().replaceFirst("Entity", "")
+					+ "_" + biomeType.name(), 
+				new int [] {
+						defaultSpawnProbability,
+						defaultMinSpawn,
+						defaultMaxSpawn
+						}
+		).getIntList();
 	}
 	
 	public void endConfig() {
