@@ -1,8 +1,6 @@
 package silverclaw.birds.common;
 
-import silverclaw.birds.common.entity.EntityOstrich;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;

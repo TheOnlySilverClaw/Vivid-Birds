@@ -1,30 +1,22 @@
 package silverclaw.birds.common;
 
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.play.server.S38PacketPlayerListItem.AddPlayerData;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
-import net.minecraftforge.common.BiomeManager.BiomeType;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import silverclaw.birds.common.entity.EntityCrow;
 import silverclaw.birds.common.entity.EntityKiwi;
 import silverclaw.birds.common.entity.EntityLyrebird;
 import silverclaw.birds.common.entity.EntityOstrich;
 import silverclaw.birds.common.entity.EntityPenguin;
 import silverclaw.birds.common.entity.EntitySeagull;
 import silverclaw.birds.common.entity.EntityVulture;
-import silverclaw.birds.common.entity.songbirds.EntitySongBird;
 import silverclaw.birds.common.entity.songbirds.EntitySparrow;
-import silverclaw.birds.common.item.ItemOstrichEgg;
 
 public class CommonProxyBirds {
 

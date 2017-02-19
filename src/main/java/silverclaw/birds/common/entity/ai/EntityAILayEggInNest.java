@@ -1,13 +1,9 @@
 package silverclaw.birds.common.entity.ai;
 
-import javax.annotation.Nonnull;
-
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.init.Blocks;
-import net.minecraft.pathfinding.PathFinder;
-import net.minecraft.pathfinding.PathNavigate;
 import net.minecraft.util.BlockPos;
 
 public class EntityAILayEggInNest extends EntityAIBase {

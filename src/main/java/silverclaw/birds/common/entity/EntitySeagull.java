@@ -8,9 +8,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import silverclaw.birds.common.FeatherVariant;
-import silverclaw.birds.common.entity.ai.EntityAIFlyingAvoidAttacker;
 import silverclaw.birds.common.entity.ai.EntityAIFlyingAvoidEnemies;
-import silverclaw.birds.common.entity.ai.EntityAIFlyingBase;
 import silverclaw.birds.common.entity.ai.EntityAIPickupItem;
 
 public class EntitySeagull extends EntityPeacefulBird {

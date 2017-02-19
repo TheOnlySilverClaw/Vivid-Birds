@@ -6,13 +6,9 @@ import com.google.common.base.Predicate;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.pathfinding.PathEntity;
-import net.minecraft.pathfinding.PathNavigate;
 
 public class EntityAIPickupItem extends EntityAIBase {
 
@@ -53,6 +49,7 @@ public class EntityAIPickupItem extends EntityAIBase {
 					entity.getEntityBoundingBox().expand(searchRadius, searchRadius, searchRadius),
 					new Predicate<Entity>() {
 				
+				@Override
 				public boolean apply(Entity entity) {
 					
 					return ((EntityItem) entity).getEntityItem().getItem() == item; 

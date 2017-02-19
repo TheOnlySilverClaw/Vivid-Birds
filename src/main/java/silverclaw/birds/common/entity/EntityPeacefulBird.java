@@ -1,7 +1,6 @@
 package silverclaw.birds.common.entity;
 
 import silverclaw.birds.common.BirdItem;
-import silverclaw.birds.common.Birds;
 import silverclaw.birds.common.entity.ai.EntityAIPickupItem;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -13,7 +12,6 @@ import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.passive.EntityAnimal;
-import net.minecraft.init.Items;
 import net.minecraft.world.World;
 
 public abstract class EntityPeacefulBird extends EntityAnimal {

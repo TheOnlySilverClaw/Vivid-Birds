@@ -28,7 +28,6 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase.TempCategory;
 import silverclaw.birds.common.FeatherVariant;
 import silverclaw.birds.common.entity.ai.EntityAIFlyingAvoidAttacker;
-import silverclaw.birds.common.entity.ai.EntityAIFlyingBase;
 import silverclaw.birds.common.entity.ai.EntityAIPickupItem;
 
 import com.google.common.base.Predicate;
