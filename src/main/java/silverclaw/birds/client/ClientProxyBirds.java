@@ -68,8 +68,8 @@ public class ClientProxyBirds extends CommonProxyBirds {
 	public void registerItemsResources() {
 		
 
-		ItemModelMesher mesher = Minecraft.getMinecraft().getRenderItem().getItemModelMesher();
-	
+		ItemModelMesher mesher = Minecraft.getMinecraft()
+				.getRenderItem().getItemModelMesher();
 		
 		for(BirdItem item : BirdItem.values()) {
 			

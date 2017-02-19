@@ -117,7 +117,6 @@ public class EntityLyrebird extends EntityPeacefulBird {
 			String inheritedLivingSound, String inheritedHurtSound) {
 		
 		this(worldObj);
-		setGrowingAge(rand.nextInt(10000) - 25000);
 		livingSounds[rand.nextInt(livingSounds.length)] = inheritedLivingSound;
 		hurtSounds[rand.nextInt(hurtSounds.length)] = inheritedHurtSound;
 	}
