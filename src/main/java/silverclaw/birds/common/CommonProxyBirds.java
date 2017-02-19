@@ -64,42 +64,40 @@ public class CommonProxyBirds {
 
 	private final void registerBirds() {
 		
-		int eggBackground = 0xffffcc;
-		
 		EntityRegistry.registerModEntity(EntityLyrebird.class,
 				"Lyrebird", 0, Birds.instance,
 				80, 3, true,
-				eggBackground, 0x604020);
+				0xffffcc, 0x604020);
 		
 		EntityRegistry.registerModEntity(EntityVulture.class,
 				"Vulture", 1, Birds.instance,
 				80, 3, true,
-				eggBackground, 0);
+				0xffffcc, 0);
 		
 		EntityRegistry.registerModEntity(EntityOstrich.class,
 				"Ostrich", 2, Birds.instance,
 				80, 3, true,
-				eggBackground, eggBackground);
+				0xffffcc, 0xf1f1f1);
 		
 		EntityRegistry.registerModEntity(EntityKiwi.class,
 				"Kiwi", 3, Birds.instance,
 				80, 3, true,
-				eggBackground, 55);
+				0xf1f1f1, 0xf2f2f2);
 		
 		EntityRegistry.registerModEntity(EntitySeagull.class,
 				"Seagull", 4, Birds.instance,
 				80, 3, true,
-				eggBackground, eggBackground * 2);
+				0x996633, 0x392613);
 		
 		EntityRegistry.registerModEntity(EntityPenguin.class,
 				"Penguin", 5, Birds.instance,
 				80, 3, true,
-				eggBackground, eggBackground * 3);
+				0xffffcc, 0xffffcc);
 		
 		EntityRegistry.registerModEntity(EntitySparrow.class,
 				"Sparrow", 6, Birds.instance,
 				80, 3, true,
-				eggBackground * 2, eggBackground);
+				0xffffcc * 2, 0xffffcc);
 		
 	}
 	
