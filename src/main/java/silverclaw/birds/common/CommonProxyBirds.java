@@ -40,7 +40,8 @@ public class CommonProxyBirds {
 
 	private void registerRecipes() {
 		
-		GameRegistry.addShapelessRecipe(new ItemStack(BirdItem.BREADCRUMBS.getInstance(), 8), Items.bread);
+		GameRegistry.addShapelessRecipe(
+				new ItemStack(BirdItem.BREADCRUMBS.getInstance(), 8), Items.bread);
 		
 		GameRegistry.addSmelting(BirdItem.WILDBIRD_RAW.getInstance(), 
 				new ItemStack(BirdItem.WILDBIRD_COOKED.getInstance(), 1), 1);
@@ -63,45 +64,68 @@ public class CommonProxyBirds {
 
 	private final void registerBirds() {
 		
-		registerEntity(EntityLyrebird.class, 123);
-		registerEntity(EntityVulture.class, 234);
-		registerEntity(EntityOstrich.class, 456);
-		registerEntity(EntityKiwi.class, 567);
-		//registerEntity(EntityCrow.class, 789);
-		registerEntity(EntitySeagull.class, 479);
-		registerEntity(EntityPenguin.class, 258);
-		//registerEntity(EntitySongBird.class, 477);
-		registerEntity(EntitySparrow.class, 666);
+		int eggBackground = 0xffffcc;
+		
+		EntityRegistry.registerModEntity(EntityLyrebird.class,
+				"Lyrebird", 0, Birds.instance,
+				80, 3, true,
+				eggBackground, 0x604020);
+		
+		EntityRegistry.registerModEntity(EntityVulture.class,
+				"Vulture", 1, Birds.instance,
+				80, 3, true,
+				eggBackground, 0);
+		
+		EntityRegistry.registerModEntity(EntityOstrich.class,
+				"Ostrich", 2, Birds.instance,
+				80, 3, true,
+				eggBackground, eggBackground);
+		
+		EntityRegistry.registerModEntity(EntityKiwi.class,
+				"Kiwi", 3, Birds.instance,
+				80, 3, true,
+				eggBackground, 55);
+		
+		EntityRegistry.registerModEntity(EntitySeagull.class,
+				"Seagull", 4, Birds.instance,
+				80, 3, true,
+				eggBackground, eggBackground * 2);
+		
+		EntityRegistry.registerModEntity(EntityPenguin.class,
+				"Penguin", 5, Birds.instance,
+				80, 3, true,
+				eggBackground, eggBackground * 3);
+		
+		EntityRegistry.registerModEntity(EntitySparrow.class,
+				"Sparrow", 6, Birds.instance,
+				80, 3, true,
+				eggBackground * 2, eggBackground);
+		
 	}
 	
-	private final void registerEntity(Class<? extends EntityLiving> entityClass, int eggColor) {
-		
-		EntityRegistry.registerGlobalEntityID(entityClass, Birds.getEntityName(entityClass), 
-				EntityRegistry.findGlobalUniqueEntityId(), Birds.EGG_WHITE, eggColor);
-	}
 	
 
 	
 	private final void registerSpawns() {
 		
 
-		addSpawn(EntityLyrebird.class, Type.JUNGLE, 5, 6, 3, EnumCreatureType.CREATURE);
-		addSpawn(EntityLyrebird.class, Type.DENSE, 2, 2, 4, EnumCreatureType.CREATURE);
+		addSpawn(EntityLyrebird.class, Type.JUNGLE, 6, 6, 3, EnumCreatureType.CREATURE);
+		addSpawn(EntityLyrebird.class, Type.DENSE, 3, 2, 4, EnumCreatureType.CREATURE);
 		
-		addSpawn(EntityVulture.class, Type.DRY, 3, 3, 10, EnumCreatureType.CREATURE);
-		addSpawn(EntityVulture.class, Type.HOT, 2, 2, 4, EnumCreatureType.MONSTER);
+		addSpawn(EntityVulture.class, Type.DRY, 4, 3, 10, EnumCreatureType.MONSTER);
+		addSpawn(EntityVulture.class, Type.HOT, 3, 2, 4, EnumCreatureType.MONSTER);
 		
 		addSpawn(EntityOstrich.class, Type.SAVANNA, 3, 2, 5, EnumCreatureType.CREATURE);
 		
-		addSpawn(EntityKiwi.class, Type.DENSE, 3, 2, 6, EnumCreatureType.MONSTER);
+		addSpawn(EntityKiwi.class, Type.DENSE, 3, 2, 6, EnumCreatureType.CREATURE);
 		
 		addSpawn(EntityPenguin.class, Type.SNOWY, 5, 4, 10, EnumCreatureType.CREATURE);
-		addSpawn(EntityPenguin.class, Type.COLD, 2, 4, 10, EnumCreatureType.CREATURE);
+		addSpawn(EntityPenguin.class, Type.COLD, 3, 4, 10, EnumCreatureType.CREATURE);
 		
-		addSpawn(EntitySeagull.class, Type.BEACH, 3, 4, 10, EnumCreatureType.CREATURE);
-		addSpawn(EntitySeagull.class, Type.OCEAN, 2, 3, 16, EnumCreatureType.CREATURE);
+		addSpawn(EntitySeagull.class, Type.BEACH, 6, 4, 10, EnumCreatureType.CREATURE);
+		addSpawn(EntitySeagull.class, Type.OCEAN, 3, 3, 16, EnumCreatureType.CREATURE);
 		
-		addSpawn(EntitySparrow.class, Type.FOREST, 3, 6, 12, EnumCreatureType.CREATURE);
+		addSpawn(EntitySparrow.class, Type.FOREST, 5, 6, 12, EnumCreatureType.CREATURE);
 
 	}
 
