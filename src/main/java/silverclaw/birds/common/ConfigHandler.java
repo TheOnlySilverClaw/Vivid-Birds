@@ -33,7 +33,7 @@ public class ConfigHandler {
 			int defaultSpawnProbability, int defaultMinSpawn, int defaultMaxSpawn) {
 	
 		return config.get(CATEGORY_SPAWNING,
-				living.getClass().getName().replaceFirst("Entity", "")
+				living.getName().replaceFirst("Entity", "")
 					+ "_" + biomeType.name(), 
 				new int [] {
 						defaultSpawnProbability,
