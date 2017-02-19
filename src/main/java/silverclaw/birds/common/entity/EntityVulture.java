@@ -25,7 +25,6 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.BiomeGenBase.TempCategory;
 import silverclaw.birds.common.FeatherVariant;
 import silverclaw.birds.common.entity.ai.EntityAIFlyingAvoidAttacker;
 import silverclaw.birds.common.entity.ai.EntityAIPickupItem;
@@ -160,19 +159,6 @@ public class EntityVulture extends EntityMob {
 	}
 
 	@Override
-	public boolean getCanSpawnHere() {
-		
-		return worldObj.getBiomeGenForCoords(getPosition())
-				.getTempCategory() == TempCategory.WARM;
-	}
-
-	@Override
-	protected boolean isValidLightLevel() {
-		
-		return true;
-	}
-
-	@Override
 	protected void dropFewItems(boolean drop, int amount) {
 		
 		entityDropItem(new ItemStack(Items.feather, rand.nextInt(2), 
@@ -188,28 +174,31 @@ public class EntityVulture extends EntityMob {
 	protected void applyEntityAttributes() {
 		
 		super.applyEntityAttributes();
+		
 		switch(worldObj.getDifficulty()) {
 		
 		case EASY:
 			getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(1);
 			getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(20);
-			getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(6);
-		
+			getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(7);
 			break;
-		case HARD:
-			getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(3);
-			getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(45);
-			getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(8 + rand.nextInt(4));
-		
-			break;
+			
 		case NORMAL:
 			getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(2);
 			getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(40);
 			getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(8);
-		
 			break;
+			
+		case HARD:
+			getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(3);
+			getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(45);
+			getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(9);
+			break;
+			
 		case PEACEFUL:
+			// should not spawn in peaceful
 			break;
+			
 		default:
 			break;
 		}
