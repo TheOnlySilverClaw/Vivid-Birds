@@ -74,7 +74,8 @@ public class ClientProxyBirds extends CommonProxyBirds {
 		for(BirdItem item : BirdItem.values()) {
 			
 			mesher.register(item.getInstance(), 0,
-					new ModelResourceLocation(item.getResourceName(), "inventory"));
+					new ModelResourceLocation(
+							item.getResourceName(), "inventory"));
 		}
 		
 		registerFeathers();
@@ -93,7 +94,8 @@ public class ClientProxyBirds extends CommonProxyBirds {
 			
 			itemNames[i++] = feather.getResourceName();
 			mesher.register(Items.feather, feather.getMetaData(),
-					new ModelResourceLocation(feather.getResourceName(), "inventory"));
+					new ModelResourceLocation(
+							feather.getResourceName(), "inventory"));
 		}
 		ModelBakery.addVariantName(Items.feather, itemNames);
 	}
