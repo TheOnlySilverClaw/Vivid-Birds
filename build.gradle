@@ -2,8 +2,13 @@ plugins {
     id "net.minecraftforge.gradle.forge" version "2.0.2"
 }
 
+compileJava {
+	sourceCompatibility = 1.8
+	targetCompatibility = 1.8
+}
+
 version = "1.0"
-group= "silverclaw" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+group= "silverclaw"
 archivesBaseName = "birdmod"
 
 minecraft {
