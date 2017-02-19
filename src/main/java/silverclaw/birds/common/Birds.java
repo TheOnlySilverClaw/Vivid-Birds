@@ -1,7 +1,6 @@
 package silverclaw.birds.common;
 
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.Entity;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -10,7 +9,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid = Birds.MODID, version = "1.0.0", name="Bird Mod")
+@Mod(modid = Birds.MODID, version = "1.0.0-snapshot1", name="Bird Mod")
 public class Birds {
 	
 	public static final String MODID = "birdmod";
@@ -23,10 +22,6 @@ public class Birds {
 			return Items.feather;
 		}
 	};
-	
-
-	public final static int EGG_WHITE = 0xfffacd;
-
 	
 	@Mod.Instance(MODID)
 	public static Birds instance;
@@ -48,11 +43,5 @@ public class Birds {
 		
 		FMLCommonHandler.instance().bus().register(instance);
 		proxy.init(event);
-	}
-	
-	// utility
-	public final static String getEntityName(Class<? extends Entity> entityClass) {
-		
-		return entityClass.getSimpleName().replaceFirst("Entity", "");
 	}
 }
