@@ -1,12 +1,10 @@
 package silverclaw.birds.common;
 
-import silverclaw.birds.common.item.ItemOstrichEgg;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 
 public enum BirdItem implements NamedResource {
 
-	OSTRICH_EGG(new ItemOstrichEgg()),
 	BREADCRUMBS(new ItemFood(0, false).setUnlocalizedName("breadcrumbs")),
 	WILDBIRD_RAW(new ItemFood(3, true).setUnlocalizedName("wildbird_raw")),
 	WILDBIRD_COOKED(new ItemFood(4, true).setUnlocalizedName("wildbird_cooked"));
