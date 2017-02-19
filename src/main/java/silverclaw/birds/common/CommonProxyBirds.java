@@ -107,23 +107,23 @@ public class CommonProxyBirds {
 	private final void registerSpawns() {
 		
 
-		addSpawn(EntityLyrebird.class, Type.JUNGLE, 6, 6, 3, EnumCreatureType.CREATURE);
-		addSpawn(EntityLyrebird.class, Type.DENSE, 3, 2, 4, EnumCreatureType.CREATURE);
+		addSpawn(EntityLyrebird.class, Type.JUNGLE, 10, 6, 3, EnumCreatureType.CREATURE);
+		addSpawn(EntityLyrebird.class, Type.DENSE, 6, 2, 4, EnumCreatureType.CREATURE);
 		
-		addSpawn(EntityVulture.class, Type.DRY, 4, 3, 10, EnumCreatureType.MONSTER);
-		addSpawn(EntityVulture.class, Type.HOT, 3, 2, 4, EnumCreatureType.MONSTER);
+		addSpawn(EntityVulture.class, Type.DRY, 10, 3, 10, EnumCreatureType.MONSTER);
+		addSpawn(EntityVulture.class, Type.HOT, 8, 2, 4, EnumCreatureType.MONSTER);
 		
-		addSpawn(EntityOstrich.class, Type.SAVANNA, 3, 2, 5, EnumCreatureType.CREATURE);
+		addSpawn(EntityOstrich.class, Type.SAVANNA, 10, 2, 5, EnumCreatureType.CREATURE);
 		
-		addSpawn(EntityKiwi.class, Type.DENSE, 3, 2, 6, EnumCreatureType.CREATURE);
+		addSpawn(EntityKiwi.class, Type.DENSE, 8, 2, 6, EnumCreatureType.CREATURE);
 		
-		addSpawn(EntityPenguin.class, Type.SNOWY, 5, 4, 10, EnumCreatureType.CREATURE);
-		addSpawn(EntityPenguin.class, Type.COLD, 3, 4, 10, EnumCreatureType.CREATURE);
+		addSpawn(EntityPenguin.class, Type.SNOWY, 8, 4, 10, EnumCreatureType.CREATURE);
+		addSpawn(EntityPenguin.class, Type.COLD, 6, 4, 10, EnumCreatureType.CREATURE);
 		
-		addSpawn(EntitySeagull.class, Type.BEACH, 6, 4, 10, EnumCreatureType.CREATURE);
-		addSpawn(EntitySeagull.class, Type.OCEAN, 3, 3, 16, EnumCreatureType.CREATURE);
+		addSpawn(EntitySeagull.class, Type.BEACH, 12, 4, 10, EnumCreatureType.CREATURE);
+		addSpawn(EntitySeagull.class, Type.OCEAN, 8, 3, 16, EnumCreatureType.CREATURE);
 		
-		addSpawn(EntitySparrow.class, Type.FOREST, 5, 6, 12, EnumCreatureType.CREATURE);
+		addSpawn(EntitySparrow.class, Type.FOREST, 10, 6, 12, EnumCreatureType.CREATURE);
 
 	}
 
