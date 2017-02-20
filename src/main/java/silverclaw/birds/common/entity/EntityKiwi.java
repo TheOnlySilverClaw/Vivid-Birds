@@ -1,9 +1,5 @@
 package silverclaw.birds.common.entity;
 
-import silverclaw.birds.common.BirdItem;
-import com.google.common.base.Predicate;
-
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAvoidEntity;
@@ -15,6 +11,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemSeeds;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import silverclaw.birds.common.BirdItem;
 
 public class EntityKiwi extends EntityPeacefulBird {
 	
@@ -24,17 +21,11 @@ public class EntityKiwi extends EntityPeacefulBird {
 		
 		setSize(0.9f, 0.8f);
 		
-		
-		tasks.addTask(0, new EntityAIAvoidEntity(this, new Predicate<Entity>() {
-			
-			@Override
-			public boolean apply(Entity entity) {
-				
-				return entity instanceof EntityMob || entity instanceof EntityPlayer;
-			}
-		}, 10f, 1.2, 1.45));
-
-		tasks.addTask(0, new EntityAIFleeSun(this, 1.2f));
+		tasks.addTask(1, new EntityAIAvoidEntity<EntityMob>(
+				this, EntityMob.class, 10f, 1.2, 1.45));
+		tasks.addTask(1, new EntityAIAvoidEntity<EntityPlayer>(
+				this, EntityPlayer.class, 10f, 1.2, 1.45));
+		tasks.addTask(1, new EntityAIFleeSun(this, 1.2f));
 		tasks.addTask(5, new EntityAITempt(this, 1.15f, Items.melon_seeds, true));
 
 	}

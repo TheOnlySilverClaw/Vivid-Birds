@@ -75,27 +75,25 @@ public class EntityVulture extends EntityMob {
 		tasks.addTask(1, new EntityAIPanic(this, 1.4f));
 		
 		tasks.addTask(2, new EntityAILeapAtTarget(this, 0.5F));
-		tasks.addTask(3, new EntityAIAvoidEntity(this, new Predicate<Entity>() {
+		tasks.addTask(3, new EntityAIAvoidEntity<EntityLivingBase>(
+				this, EntityLivingBase.class,
+				new Predicate<EntityLivingBase>() {
 
 			@Override
-			public boolean apply(Entity entity) {
-				
-				if(entity instanceof EntityLivingBase) {
-					
-					EntityLivingBase living = (EntityLivingBase) entity;
+			public boolean apply(EntityLivingBase entity) {
 					
 					if(entity instanceof EntityVulture) return false;
 					if(entity instanceof EntityWaterMob) return false;
 					if(entity instanceof EntityCreeper) {
-						return living.getHealth() < 2; 
+						return entity.getHealth() < 2; 
 					}
-					if (living.isBurning()) return living.getHealth() > living.getMaxHealth()/3;
-					if(living.getHealth() < 2.5f) return false;
+					if (entity.isBurning()) return entity.getHealth()
+							> entity.getMaxHealth()/3;
+					if(entity.getHealth() < 2.5f) return false;
 					for(Potion potion : PREY_EFFECTS) {
-						if(living.getActivePotionEffect(potion) != null) 
-							return living.getHealth() > living.getMaxHealth()/2;
+						if(entity.getActivePotionEffect(potion) != null) 
+							return entity.getHealth() > entity.getMaxHealth()/2;
 					}
-				}
 				return true;
 			}
 		}, 3, 1.1, 1.4));
@@ -110,7 +108,8 @@ public class EntityVulture extends EntityMob {
 		tasks.addTask(5, new EntityAIWander(this, 1.0));
 		tasks.addTask(6, new EntityAILookIdle(this));
 		
-		targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityLivingBase.class, false));
+		targetTasks.addTask(3, new EntityAINearestAttackableTarget<EntityLivingBase>(
+				this, EntityLivingBase.class, false));
 		targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
 		targetTasks.addTask(1, new EntityAIPickupItem(this, Items.rotten_flesh, 8, 1.1f, 0.3f));
 		

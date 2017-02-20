@@ -44,15 +44,16 @@ public class EntityOstrich extends EntityTameable {
 		setSize(1.5f, 2.0f);
 		stepHeight = 1.2f;
 			
-		tasks.addTask(0, new EntityAIAvoidEntity(this, new Predicate<Entity>() {
+		tasks.addTask(0, new EntityAIAvoidEntity<EntityLivingBase>(
+				this, EntityLivingBase.class,
+				new Predicate<EntityLivingBase>() {
 
 			@Override
-			public boolean apply(Entity entity) {
+			public boolean apply(EntityLivingBase entity) {
 				
 				if(entity instanceof EntityLivingBase) {
 					
-					EntityLivingBase living = (EntityLivingBase) entity;
-					ItemStack held = living.getHeldItem();
+					ItemStack held = entity.getHeldItem();
 					
 					if(held != null) {
 						Item item = held.getItem();
@@ -62,8 +63,8 @@ public class EntityOstrich extends EntityTameable {
 									|| item == Items.blaze_rod;
 						}
 					} else {
-						return living instanceof EntityMob
-								&& 	(living.getHealth() > getHealth() 
+						return entity instanceof EntityMob
+								&& 	(entity.getHealth() > getHealth() 
 										|| getHealth() < getMaxHealth() / 2);
 					}
 				}
@@ -86,14 +87,13 @@ public class EntityOstrich extends EntityTameable {
 		
 		targetTasks.addTask(0, new EntityAIHurtByTarget(
 				this, true, EntityLivingBase.class));
-		targetTasks.addTask(5, new EntityAITargetNonTamed(
-				this, EntityMob.class, true, new Predicate<Entity>() {
+		targetTasks.addTask(5, new EntityAITargetNonTamed<EntityMob>(
+				this, EntityMob.class, true, new Predicate<EntityMob>() {
 			
 			@Override
-			public boolean apply(Entity entity) {
+			public boolean apply(EntityMob entity) {
 
-				return entity instanceof EntityMob
-						&& getHealth() > getMaxHealth() / 2;
+				return getHealth() > getMaxHealth() / 2;
 			}
 		}));
 	}
@@ -207,7 +207,7 @@ public class EntityOstrich extends EntityTameable {
 		if(item == Items.wheat) {
 			if(getHealth() < getMaxHealth()) {
 				heal(1);
-				handleHealthUpdate((byte) 0);
+				//handleHealthUpdate((byte) 0);
 				stack.stackSize--;
 				return true;
 			}
@@ -274,7 +274,7 @@ public class EntityOstrich extends EntityTameable {
 	}
 	
 	@Override
-	public Entity getOwner() {
+	public EntityLivingBase getOwner() {
 		return null;
 	}
 	

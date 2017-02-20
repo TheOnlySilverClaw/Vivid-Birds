@@ -59,7 +59,7 @@ public class EntityPenguin extends EntityPeacefulBird {
 		if(rand.nextInt(50) == 0 && worldObj.getBiomeGenForCoords(getPosition()).getTempCategory()
 				== TempCategory.WARM && worldObj.getLight(getPosition()) > 8) {
 			damageEntity(DamageSource.inFire, 0.5f);
-			handleHealthUpdate((byte) 2);
+			//handleHealthUpdate((byte) 2);
 		}
 	}
 }

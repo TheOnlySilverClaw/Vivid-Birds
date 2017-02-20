@@ -20,13 +20,15 @@ public class EntitySongBird extends EntityPeacefulBird {
 		setSize(0.4f, 0.45f);
 		
 		limbSwingAmount = 1;
-		tasks.addTask(3, new EntityAIAvoidEntity(this, new Predicate<Entity>() {
+		tasks.addTask(3, new EntityAIAvoidEntity<Entity>(
+				this, Entity.class,
+				new Predicate<Entity>() {
 
-			@Override
-			public boolean apply(Entity entity) {
-
-				return !(entity instanceof EntitySongBird);
-			}
+				@Override
+				public boolean apply(Entity entity) {
+	
+					return !(entity instanceof EntitySongBird);
+				}
 		}, 4, 0.8, 1.2));
 		tasks.addTask(5, new EntityAIFlyingAvoidEnemies(this, 0.15f, 100, 50, 75, 
 				20, getMaxHealth(), EntityLivingBase.class, 15));
