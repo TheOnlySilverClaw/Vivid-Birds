@@ -20,11 +20,15 @@ build
 # other
 eclipse
 run
-/README.txt
-/CREDITS-fml.txt
-/LICENSE-fml.txt
-/MinecraftForge-Credits.txt
-/MinecraftForge-License.txt
-/Paulscode IBXM Library License.txt
-/Paulscode SoundSystem CodecIBXM License.txt
-/forge-1.8-11.14.4.1563-changelog.txt
+
+README.txt
+
+# licenses and credits - they are only necessary for Forge distributions, right?
+CREDITS-fml.txt
+LICENSE-fml.txt
+MinecraftForge-Credits.txt
+MinecraftForge-License.txt
+Paulscode IBXM Library License.txt
+Paulscode SoundSystem CodecIBXM License.txt
+
+forge-1.8.9-11.15.1.1722-changelog.txt
