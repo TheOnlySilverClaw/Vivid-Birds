@@ -15,8 +15,8 @@ public class VividBirds {
 	public static VividBirds instance;
 	
 	@SidedProxy(
-		clientSide = "silverclaw.vividbirds.client.ClientProxyBirds",
-		serverSide = "silverclaw.vividbirds.common.CommonProxyBirds"
+		clientSide = "silverclaw.vividbirds.client.ClientProxyVividBirds",
+		serverSide = "silverclaw.vividbirds.common.CommonProxyVividBirds"
 	)
 	public static CommonProxyVividBirds proxy;
 	
