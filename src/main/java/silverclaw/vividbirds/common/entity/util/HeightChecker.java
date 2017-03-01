@@ -1,4 +1,4 @@
-package silverclaw.vividbirds.common.entity.ai;
+package silverclaw.vividbirds.common.entity.util;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
