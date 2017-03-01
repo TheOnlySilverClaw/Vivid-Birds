@@ -6,7 +6,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.MathHelper;
-import silverclaw.vividbirds.common.entity.ai.HeightChecker;
+import silverclaw.vividbirds.common.entity.util.HeightChecker;
 
 public class ModelSeagull extends ModelBase {
 	

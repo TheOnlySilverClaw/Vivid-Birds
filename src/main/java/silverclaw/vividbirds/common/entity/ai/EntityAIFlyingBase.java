@@ -3,6 +3,7 @@ package silverclaw.vividbirds.common.entity.ai;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.util.MathHelper;
+import silverclaw.vividbirds.common.entity.util.HeightChecker;
 
 public class EntityAIFlyingBase extends EntityAIBase {
 
