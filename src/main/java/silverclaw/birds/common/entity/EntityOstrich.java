@@ -33,7 +33,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 
 public class EntityOstrich extends EntityTameable {
@@ -280,7 +279,6 @@ public class EntityOstrich extends EntityTameable {
 	
 	@Override
 	public boolean isBreedingItem(ItemStack stack) {
-		System.out.println("breed?: " + super.isBreedingItem(stack));
 		return super.isBreedingItem(stack);
 	}
 }
