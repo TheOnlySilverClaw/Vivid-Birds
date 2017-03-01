@@ -1,7 +1,7 @@
 {
-    "parent": "birdmod:builtin/generated",
+    "parent": "vivid_birds:builtin/generated",
     "textures": {
-        "layer0": "birdmod:items/breadcrumbs"
+        "layer0": "vivid_birds:items/wildbird_raw"
     },
     "display": {
         "thirdperson": {

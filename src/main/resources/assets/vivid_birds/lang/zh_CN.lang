@@ -1,0 +1,12 @@
+entity.vivid_birds.Lyrebird.name=琴鸟
+entity.vivid_birds.Vulture.name=秃鹰
+entity.vivid_birds.Ostrich.name=鸵鸟
+entity.vivid_birds.Kiwi.name=几维鸟
+entity.vivid_birds.Penguin.name=企鹅
+entity.vivid_birds.Seagull.name=海鸥
+entity.vivid_birds.Songbird.name=鸣禽
+entity.vivid_birds.Sparrow.name=麻雀
+item.ostrich_egg.name=鸵鸟蛋
+item.breadcrumbs.name=面包屑
+item.wildbird_raw.name=生野鸟肉
+item.wildbird_cooked.name=熟野鸟肉

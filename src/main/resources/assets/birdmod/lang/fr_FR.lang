@@ -1,9 +1,0 @@
-entity.birdmod.Lyrebird.name=oiseau lyre
-entity.birdmod.Vulture.name=vautour
-entity.birdmod.Ostrich.name=autruche
-entity.birdmod.Kiwi.name=kiwi
-entity.birdmod.Penguin.name=pingouin
-entity.birdmod.Seagull.name=mouette
-item.ostrich_egg.name=œuf d'autruche
-item.breadcrumbs.name=miettes
-itemGroup.Birds=oiseaux

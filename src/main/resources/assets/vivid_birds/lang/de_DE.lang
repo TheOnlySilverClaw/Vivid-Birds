@@ -1,0 +1,12 @@
+entity.vivid_birds.Lyrebird.name=Leierschwanz
+entity.vivid_birds.Vulture.name=Geier
+entity.vivid_birds.Ostrich.name=Strauss
+entity.vivid_birds.Kiwi.name=Kiwi
+entity.vivid_birds.Penguin.name=Pinguin
+entity.vivid_birds.Seagull.name=Möwe
+entity.vivid_birds.Songbird.name=Singvogel
+entity.vivid_birds.Sparrow.name=Spatz
+item.ostrich_egg.name=Straussenei
+item.breadcrumbs.name=Brotkrumen
+item.wildbird_raw.name=Roher Wildvogel
+item.wildbird_cooked.name=Gekochter Wildvogel

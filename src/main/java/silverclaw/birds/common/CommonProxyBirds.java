@@ -33,7 +33,8 @@ public class CommonProxyBirds {
 		registerSpawns();
 		registerItems();
 		registerRecipes();
-		
+		registerRenderers();
+
 		handler.endConfig();
 	}
 
@@ -50,7 +51,6 @@ public class CommonProxyBirds {
 
 	public void init(FMLInitializationEvent event) {
 		
-		registerRenderers();
 		registerItemsResources();
 	}
 	
@@ -100,9 +100,6 @@ public class CommonProxyBirds {
 				0xffffcc * 2, 0xffffcc);
 		
 	}
-	
-	
-
 	
 	private final void registerSpawns() {
 		

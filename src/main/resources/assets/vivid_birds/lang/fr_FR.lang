@@ -1,0 +1,8 @@
+entity.vivid_birds.Lyrebird.name=oiseau lyre
+entity.vivid_birds.Vulture.name=vautour
+entity.vivid_birds.Ostrich.name=autruche
+entity.vivid_birds.Kiwi.name=kiwi
+entity.vivid_birds.Penguin.name=pingouin
+entity.vivid_birds.Seagull.name=mouette
+item.ostrich_egg.name=œuf d'autruche
+item.breadcrumbs.name=miettes

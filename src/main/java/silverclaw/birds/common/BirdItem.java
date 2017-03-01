@@ -1,5 +1,6 @@
 package silverclaw.birds.common;
 
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 
@@ -19,7 +20,7 @@ public enum BirdItem implements NamedResource {
 
 	private BirdItem(Item instance) {
 		
-		this.instance = instance.setCreativeTab(Birds.tabBirds);
+		this.instance = instance.setCreativeTab(CreativeTabs.tabFood);
 		this.rawName = instance.getUnlocalizedName().replaceFirst("item.", "");
 	}
 	
