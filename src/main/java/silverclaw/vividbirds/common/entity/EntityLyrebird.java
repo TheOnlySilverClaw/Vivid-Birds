@@ -79,11 +79,14 @@ public class EntityLyrebird extends EntityPeacefulBird {
 	@Override
 	public String getLivingSound() {
 
+		if(livingSounds.isEmpty()) return null;
 		return LyrebirdSounds.randomSound(livingSounds);
 	}
 
 	@Override
 	public String getHurtSound() {
+		
+		if(hurtSounds.isEmpty()) return null;
 		return LyrebirdSounds.randomSound(hurtSounds);
 	}
 	
@@ -162,6 +165,8 @@ public class EntityLyrebird extends EntityPeacefulBird {
 		super.writeEntityToNBT(compound);
 		
 		NBTTagList livingSoundsNBT = new NBTTagList();
+		System.out.println(livingSounds.size());
+		System.out.println(livingSounds);
 		for(String livingSound : livingSounds) {
 			livingSoundsNBT.appendTag(new NBTTagString(livingSound));
 		}

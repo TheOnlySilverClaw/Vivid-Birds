@@ -1,6 +1,8 @@
 package silverclaw.vividbirds.common;
 
 import java.util.Arrays;
+import java.util.stream.Collectors;
+
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Items;
@@ -44,18 +46,23 @@ public class CommonProxyVividBirds {
 	//TODO: refactor this!
 	private void loadLyrebirdSounds() {
 		
-		LyrebirdSounds.LIVING_SOUNDS = Arrays.asList(
+		LyrebirdSounds.LIVING_SOUNDS = Arrays.stream(
 				handler.getLyrebirdLivingSounds(
-						LyrebirdSounds.DEFAULT_LIVING_SOUNDS));
+						LyrebirdSounds.DEFAULT_LIVING_SOUNDS))
+				.filter(soundString -> !soundString.isEmpty())
+				.collect(Collectors.toList());
 
-		
-		LyrebirdSounds.HURT_SOUNDS = Arrays.asList(
-				handler.getLyrebirdLivingSounds(
-						LyrebirdSounds.DEFAULT_HURT_SOUNDS));
+		LyrebirdSounds.HURT_SOUNDS = Arrays.stream(
+				handler.getLyrebirdHurtSounds(
+						LyrebirdSounds.DEFAULT_HURT_SOUNDS))
+				.filter(soundString -> !soundString.isEmpty())
+				.collect(Collectors.toList());
 
-		LyrebirdSounds.DEATH_SOUNDS = Arrays.asList(
-				handler.getLyrebirdLivingSounds(
-						LyrebirdSounds.DEFAULT_DEATH_SOUNDS));
+		LyrebirdSounds.DEATH_SOUNDS = Arrays.stream(
+				handler.getLyrebirdDeatchSounds(
+						LyrebirdSounds.DEFAULT_DEATH_SOUNDS))
+				.filter(soundString -> !soundString.isEmpty())
+				.collect(Collectors.toList());
 	}
 
 

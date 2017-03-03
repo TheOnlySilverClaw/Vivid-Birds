@@ -94,31 +94,35 @@ public class LyrebirdSounds {
 	private static List<String> selectSounds(
 			List<String> available, int size) {
 	
+		if(available.size() <= size) return new ArrayList<>(available);
+		
 		Collections.shuffle(available, rand);
-		List<String> selected = new ArrayList<>(size);
-		for(int i = 0; i< size; i++) {
-			selected.add(available.get(i));
-		}
-		return selected;
+
+		return new ArrayList<>(available.subList(0, size));
 	}
 	
 	public static final String randomSound(List<String> available) {
 		
-		if(available.size() == 0) return null;
 		return available.get(rand.nextInt(available.size()));
 	}
 	
 	public static List<String> selectLivingSounds() {
+		
+		if(LIVING_SOUNDS.isEmpty()) return Collections.emptyList();
 		
 		return selectSounds(LIVING_SOUNDS, LIVING_SOUND_NUMBER);
 	}
 	
 	public static List<String> selectHurtSounds() {
 		
+		if(HURT_SOUNDS.isEmpty()) return Collections.emptyList();
+		
 		return selectSounds(HURT_SOUNDS, HURT_SOUND_NUMBER);
 	}
 	
 	public static String selectDeathSound() {
+		
+		if(DEATH_SOUNDS.isEmpty()) return null;
 		
 		return randomSound(DEATH_SOUNDS);
 	}
@@ -130,9 +134,13 @@ public class LyrebirdSounds {
 		// we do not want duplicate sounds
 		Set<String> mergedSounds = new HashSet<>(
 				sounds1.size() + sounds2.size());
+		
 		mergedSounds.addAll(sounds1);
 		mergedSounds.addAll(sounds2);
-		mergedSounds.add(randomSound(fillers));
+		
+		if(!fillers.isEmpty()) {
+			mergedSounds.add(randomSound(fillers));
+		}
 		
 		return mergedSounds.stream().limit(limit)
 			.collect(Collectors.toList());
