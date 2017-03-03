@@ -1,5 +1,9 @@
 package silverclaw.vividbirds.common;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Items;
@@ -17,6 +21,7 @@ import silverclaw.vividbirds.common.entity.EntityPenguin;
 import silverclaw.vividbirds.common.entity.EntitySeagull;
 import silverclaw.vividbirds.common.entity.EntityVulture;
 import silverclaw.vividbirds.common.entity.songbirds.EntitySparrow;
+import silverclaw.vividbirds.common.entity.util.LyrebirdSounds;
 
 public class CommonProxyVividBirds {
 
@@ -34,15 +39,33 @@ public class CommonProxyVividBirds {
 		registerItems();
 		registerRecipes();
 		registerRenderers();
+		loadLyrebirdSounds();
 
 		handler.endConfig();
+	}
+
+	//TODO: refactor this!
+	private void loadLyrebirdSounds() {
+		
+		LyrebirdSounds.LIVING_SOUNDS = Arrays.asList(
+				handler.getLyrebirdLivingSounds(
+						LyrebirdSounds.DEFAULT_LIVING_SOUNDS));
+
+		
+		LyrebirdSounds.HURT_SOUNDS = Arrays.asList(
+				handler.getLyrebirdLivingSounds(
+						LyrebirdSounds.DEFAULT_HURT_SOUNDS));
+
+		LyrebirdSounds.DEATH_SOUNDS = Arrays.asList(
+				handler.getLyrebirdLivingSounds(
+						LyrebirdSounds.DEFAULT_DEATH_SOUNDS));
 	}
 
 
 	private void registerRecipes() {
 		
 		GameRegistry.addShapelessRecipe(
-				new ItemStack(BirdItem.BREADCRUMBS.getInstance(), 8), Items.bread);
+				new ItemStack(BirdItem.BREADCRUMBS.getInstance(), 16), Items.bread);
 		
 		GameRegistry.addSmelting(BirdItem.WILDBIRD_RAW.getInstance(), 
 				new ItemStack(BirdItem.WILDBIRD_COOKED.getInstance(), 1), 1);
@@ -117,7 +140,7 @@ public class CommonProxyVividBirds {
 		addSpawn(EntityPenguin.class, Type.SNOWY, 8, 4, 10, EnumCreatureType.CREATURE);
 		addSpawn(EntityPenguin.class, Type.COLD, 6, 4, 10, EnumCreatureType.CREATURE);
 		
-		addSpawn(EntitySeagull.class, Type.BEACH, 12, 4, 10, EnumCreatureType.CREATURE);
+		addSpawn(EntitySeagull.class, Type.BEACH, 10, 4, 10, EnumCreatureType.CREATURE);
 		addSpawn(EntitySeagull.class, Type.OCEAN, 8, 3, 16, EnumCreatureType.CREATURE);
 		
 		addSpawn(EntitySparrow.class, Type.FOREST, 10, 6, 12, EnumCreatureType.CREATURE);

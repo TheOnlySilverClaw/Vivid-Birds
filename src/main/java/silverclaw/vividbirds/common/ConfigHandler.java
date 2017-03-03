@@ -8,13 +8,13 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 public class ConfigHandler {
 
 	private static final String CATEGORY_SPAWNING = "SPAWNING";
+	private static final String CATEGORY_LYREBIRD = "LYREBIRD";
 	
 	private static Configuration config;
 	
 	public ConfigHandler(FMLPreInitializationEvent event) {
 
 		config = new Configuration(event.getSuggestedConfigurationFile());
-
 	}
 	
 	public void startConfig() {
@@ -26,6 +26,9 @@ public class ConfigHandler {
 				+	"(spawn probability,\n"
 				+	"minimum amount per spawn,\n"
 				+ 	"maximum amount per spawn\n)");
+		
+		config.addCustomCategoryComment(CATEGORY_LYREBIRD,
+				"Lyrebird specific settings.");
 	}
 	
 	
@@ -41,6 +44,33 @@ public class ConfigHandler {
 						defaultMaxSpawn
 						}
 		).getIntList();
+	}
+	
+	public String[] getLyrebirdLivingSounds(String [] defaults) {
+		
+		return config.get(
+				CATEGORY_LYREBIRD,
+				"LivingSounds",
+				defaults)
+				.getStringList();
+	}
+
+	public String[] getLyrebirdHurtSounds(String [] defaults) {
+		
+		return config.get(
+				CATEGORY_LYREBIRD,
+				"HurtSounds",
+				defaults)
+				.getStringList();
+	}
+	
+	public String[] getLyrebirdDeatchSounds(String [] defaults) {
+		
+		return config.get(
+				CATEGORY_LYREBIRD,
+				"DeathSounds",
+				defaults)
+				.getStringList();
 	}
 	
 	public void endConfig() {
