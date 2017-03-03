@@ -1,9 +1,6 @@
 package silverclaw.vividbirds.common;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Items;
