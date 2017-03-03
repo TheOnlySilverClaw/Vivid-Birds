@@ -7,8 +7,8 @@ import net.minecraft.item.ItemFood;
 public enum BirdItem implements NamedResource {
 
 	BREADCRUMBS(new ItemFood(0, false).setUnlocalizedName("breadcrumbs")),
-	WILDBIRD_RAW(new ItemFood(3, true).setUnlocalizedName("wildbird_raw")),
-	WILDBIRD_COOKED(new ItemFood(4, true).setUnlocalizedName("wildbird_cooked"));
+	WILDBIRD_RAW(new ItemFood(2, true).setUnlocalizedName("wildbird_raw")),
+	WILDBIRD_COOKED(new ItemFood(3, true).setUnlocalizedName("wildbird_cooked"));
 
 	private final Item instance;
 	private final String rawName;
